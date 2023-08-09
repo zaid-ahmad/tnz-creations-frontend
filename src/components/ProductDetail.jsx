@@ -41,10 +41,7 @@ function ProductDetail({
         }
 
         api
-          .post(
-            'https://tnzcreationsinventory.up.railway.app/api/cart/add',
-            post_data
-          )
+          .post('/api/cart/add', post_data)
           .then((response) => {
             if (response.status === 200) {
               setCartCount(cartCount + 1)
@@ -69,10 +66,7 @@ function ProductDetail({
       }
 
       api
-        .post(
-          'https://tnzcreationsinventory.up.railway.app/api/wishlist/add',
-          post_data
-        )
+        .post('/api/wishlist/add', post_data)
         .then((response) => {
           if (response.status === 200) {
             setMessage(response.data)

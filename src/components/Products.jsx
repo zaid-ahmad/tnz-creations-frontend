@@ -27,16 +27,12 @@ function Products({
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
 
-    api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/filter?filterOption=${selectedValue}`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          const response_data = response.data
-          setProducts([...response_data])
-        }
-      })
+    api.get(`/api/filter?filterOption=${selectedValue}`).then((response) => {
+      if (response.status === 200) {
+        const response_data = response.data
+        setProducts([...response_data])
+      }
+    })
   }
   const handleImageLoad = () => {
     setImagesLoaded(true)
@@ -52,10 +48,7 @@ function Products({
       }
 
       api
-        .post(
-          'https://tnzcreationsinventory.up.railway.app/api/wishlist/add',
-          post_data
-        )
+        .post('/api/wishlist/add', post_data)
         .then((response) => {
           if (response.status === 200) {
             setMessage(response.data)
@@ -75,11 +68,9 @@ function Products({
       if (!showModal) {
         setShowModal(true)
         setId(id)
-        api
-          .get(`https://tnzcreationsinventory.up.railway.app/api/${id}/color`)
-          .then((response) => {
-            setProductColors([...response.data])
-          })
+        api.get(`/api/${id}/color`).then((response) => {
+          setProductColors([...response.data])
+        })
       }
     }
   }

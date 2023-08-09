@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import api from '../api'
-import axios from 'axios'
 import OrderItem from '../components/OrderItem'
 
 function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
@@ -11,9 +10,7 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
 
   useEffect(() => {
     api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/cart-items?email=${user.email}`
-      )
+      .get(`/cart-items?email=${user.email}`)
       .then((response) => {
         if (response.status === 200) {
           setProducts([...response.data])
@@ -29,8 +26,8 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
     const fetchImages = async () => {
       const imageSources = await Promise.all(
         products.map(async (product) => {
-          const response = await axios.get(
-            `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.product.images[0]}`,
+          const response = await api.get(
+            `/images/uploads/${product.product.images[0]}`,
             {
               responseType: 'arraybuffer',
             }
@@ -55,13 +52,10 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
       email: user.email,
     }
 
-    axios
-      .delete(
-        `https://tnzcreationsinventory.up.railway.app/api/order/remove-product/${id}`,
-        {
-          data: data_to_post,
-        }
-      )
+    api
+      .delete(`/api/order/remove-product/${id}`, {
+        data: data_to_post,
+      })
       .then((response) => {
         if (response.status === 200) {
           // Remove the deleted item from the products state

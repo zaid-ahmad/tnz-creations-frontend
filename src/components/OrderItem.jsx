@@ -23,14 +23,11 @@ const OrderItem = ({
     setQty(updatedQty) // Update the local state immediately
     updateProductQuantity(product.product._id, updatedQty)
 
-    api.put(
-      `https://tnzcreationsinventory.up.railway.app/api/cart/${product.product._id}/update-quantity`,
-      {
-        quantity: updatedQty,
-        email: user.email,
-        color: product.color,
-      }
-    )
+    api.put(`/api/cart/${product.product._id}/update-quantity`, {
+      quantity: updatedQty,
+      email: user.email,
+      color: product.color,
+    })
   }
 
   const decreaseQty = async () => {
@@ -38,14 +35,11 @@ const OrderItem = ({
       const updatedQty = qty - 1
       setQty(updatedQty)
       updateProductQuantity(product.product._id, updatedQty)
-      api.put(
-        `https://tnzcreationsinventory.up.railway.app/api/cart/${product.product._id}/update-quantity`,
-        {
-          quantity: updatedQty,
-          email: user.email,
-          color: product.color,
-        }
-      )
+      api.put(`/api/cart/${product.product._id}/update-quantity`, {
+        quantity: updatedQty,
+        email: user.email,
+        color: product.color,
+      })
     }
   }
 

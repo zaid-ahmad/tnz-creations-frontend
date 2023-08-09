@@ -25,11 +25,9 @@ const WishlistItem = ({
       if (!showModal) {
         setShowModal(true)
         setId(id)
-        api
-          .get(`https://tnzcreationsinventory.up.railway.app/api/${id}/color`)
-          .then((response) => {
-            setProductColors([...response.data])
-          })
+        api.get(`/api/${id}/color`).then((response) => {
+          setProductColors([...response.data])
+        })
       }
     }
   }

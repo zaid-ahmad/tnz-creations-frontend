@@ -13,7 +13,7 @@ function Drawer({ setProducts }) {
 
   useEffect(() => {
     api
-      .get('https://tnzcreationsinventory.up.railway.app/api/categories')
+      .get('/api/categories')
       .then((response) => {
         if (response.status === 200) {
           const responseData = response.data
@@ -47,9 +47,7 @@ function Drawer({ setProducts }) {
     const categoriesQueryParam = selectedCat.join(',')
 
     api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/products?categories=${categoriesQueryParam}`
-      )
+      .get(`/api/products?categories=${categoriesQueryParam}`)
       .then((response) => {
         const res_data = response.data
 
@@ -64,14 +62,12 @@ function Drawer({ setProducts }) {
     Object.values(checkboxesRef.current).forEach((checkbox) => {
       checkbox.checked = false
     })
-    api
-      .get('https://tnzcreationsinventory.up.railway.app/api/products')
-      .then((response) => {
-        if (response.status === 200) {
-          const response_data = response.data
-          setProducts([...response_data])
-        }
-      })
+    api.get('/api/products').then((response) => {
+      if (response.status === 200) {
+        const response_data = response.data
+        setProducts([...response_data])
+      }
+    })
   }
 
   return (

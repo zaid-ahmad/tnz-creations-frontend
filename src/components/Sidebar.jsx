@@ -6,14 +6,12 @@ function Sidebar({ user }) {
   const navigateTo = useNavigate()
 
   const logoutUser = () => {
-    api
-      .post('https://tnzcreationsinventory.up.railway.app/api/logout')
-      .then((res) => {
-        if (res.status === 200) {
-          navigateTo('/')
-          window.location.reload()
-        }
-      })
+    api.post('/api/logout').then((res) => {
+      if (res.status === 200) {
+        navigateTo('/')
+        window.location.reload()
+      }
+    })
   }
   return (
     <>

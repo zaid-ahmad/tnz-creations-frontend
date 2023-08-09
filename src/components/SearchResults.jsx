@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import axios from 'axios'
+import api from '../api'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import SelectColorModal from './SelectColorModal'
@@ -34,11 +34,8 @@ const SearchResults = ({
         productId: id,
       }
 
-      axios
-        .post(
-          'https://tnzcreationsinventory.up.railway.app/api/wishlist/add',
-          post_data
-        )
+      api
+        .post('/api/wishlist/add', post_data)
         .then((response) => {
           if (response.status === 200) {
             setWishlistCount(wishlistCount + 1)
@@ -57,11 +54,9 @@ const SearchResults = ({
       if (!showModal) {
         setShowModal(true)
         setId(id)
-        axios
-          .get(`https://tnzcreationsinventory.up.railway.app/api/${id}/color`)
-          .then((response) => {
-            setProductColors([...response.data])
-          })
+        api.get(`/api/${id}/color`).then((response) => {
+          setProductColors([...response.data])
+        })
       }
     }
   }

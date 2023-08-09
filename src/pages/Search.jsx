@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react'
 import SearchResults from '../components/SearchResults'
-import axios from 'axios'
+import api from '../api'
 import { useLocation } from 'react-router-dom'
 
 function Search({ user, wishlist, cart, searchResult, setSearchResult }) {
@@ -31,13 +31,10 @@ function Search({ user, wishlist, cart, searchResult, setSearchResult }) {
       itemId: id,
     }
 
-    axios
-      .delete(
-        'https://tnzcreationsinventory.up.railway.app/api/wishlist/remove',
-        {
-          data: data_to_post,
-        }
-      )
+    api
+      .delete('/api/wishlist/remove', {
+        data: data_to_post,
+      })
       .then((response) => {
         if (response.status === 200) {
           // Remove the deleted item from the products state
@@ -52,13 +49,10 @@ function Search({ user, wishlist, cart, searchResult, setSearchResult }) {
       const fetchImages = async () => {
         const imageSources = await Promise.all(
           searchResult.map((product) =>
-            axios
-              .get(
-                `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.images[0]}`,
-                {
-                  responseType: 'arraybuffer',
-                }
-              )
+            api
+              .get(`/images/uploads/${product.images[0]}`, {
+                responseType: 'arraybuffer',
+              })
               .then((response) => {
                 const base64 = btoa(
                   new Uint8Array(response.data).reduce(

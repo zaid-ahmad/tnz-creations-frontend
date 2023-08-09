@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
 import Logo from '../assets/Logo.svg'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { useState } from 'react'
+import api from '../api'
 
 function Header({ user, wishlistCount, cartCount, setSearchResult }) {
   const navigateTo = useNavigate()
@@ -11,22 +11,20 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
   const searchFunc = (event) => {
     event.preventDefault()
 
-    axios
-      .get(`http://localhost:3000/api/search?searchQuery=${searchQuery}`)
-      .then((response) => {
-        const data = response.data
+    api.get(`/api/search?searchQuery=${searchQuery}`).then((response) => {
+      const data = response.data
 
-        console.log(data)
-        if (data.products.length > 0) {
-          setSearchResult([...data.products])
-          navigateTo(`/search/results?query=${searchQuery}`)
-        } else if (data.categories.length > 0) {
-          setSearchResult([...data.categoryProducts])
-          navigateTo(`/search/results?query=${searchQuery}`)
-        } else {
-          navigateTo(`/search/results?query=${searchQuery}`)
-        }
-      })
+      console.log(data)
+      if (data.products.length > 0) {
+        setSearchResult([...data.products])
+        navigateTo(`/search/results?query=${searchQuery}`)
+      } else if (data.categories.length > 0) {
+        setSearchResult([...data.categoryProducts])
+        navigateTo(`/search/results?query=${searchQuery}`)
+      } else {
+        navigateTo(`/search/results?query=${searchQuery}`)
+      }
+    })
   }
 
   if (!user.expired) {
@@ -129,7 +127,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
               </div>
             </Link>
 
-            <div className='w-full max-w-xl relative flex'>
+            <div className='hidden w-full max-w-xl relative md:flex md:w-4/12'>
               <span className='absolute left-4 top-3 text-lg text-gray-400'>
                 <i className='fa-solid fa-magnifying-glass'></i>
               </span>
@@ -142,19 +140,19 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   name='search'
                   onChange={(e) => setSearchQuery(e.target.value)}
                   id='search'
-                  className='w-full border border-primary border-r-0 pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex'
+                  className='w-full border border-primary border-r-0 text-base pl-12 py-3 pr-3 rounded-l-md focus:outline-none hidden md:flex md:text-sm'
                   placeholder='Search...'
                 />
                 <button
                   type='submit'
-                  className='bg-primary border border-primary text-white px-8 rounded-r-md hover:bg-[#8f1f6d] transition:hidden md:flex flex items-center'
+                  className='bg-primary border border-primary text-base text-white px-8 rounded-r-md hover:bg-[#8f1f6d] transition:hidden md:flex flex items-center md:text-xs md:px-4'
                 >
                   Search
                 </button>
               </form>
             </div>
 
-            <div className='flex items-center space-x-6'>
+            <div className='flex items-center space-x-4'>
               <Link
                 to={'/login'}
                 className='text-center text-gray-700 hover:text-primary transition relative'

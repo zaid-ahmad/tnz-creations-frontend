@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../api'
 
 function Navbar({ user }) {
   const [categories, setCategories] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios
-      .get('https://tnzcreationsinventory.up.railway.app/api/categories')
+    api
+      .get('/api/categories')
       .then((response) => {
         if (response.status === 200) {
           const responseData = response.data
@@ -142,9 +142,9 @@ function Navbar({ user }) {
               </div>
               <a
                 href='/login'
-                className='text-gray-200 hover:text-white transition'
+                className='text-gray-200 hover:text-white transition border rounded-md p-2 md:border-none '
               >
-                Login/Register
+                Login
               </a>
             </div>
           </div>

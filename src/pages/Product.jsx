@@ -27,13 +27,11 @@ function Product({
   const { id } = useParams()
 
   useEffect(() => {
-    api
-      .get(`https://tnzcreationsinventory.up.railway.app/api/products/${id}`)
-      .then((res) => {
-        const res_data = res.data
+    api.get(`/api/products/${id}`).then((res) => {
+      const res_data = res.data
 
-        setProduct(res_data)
-      })
+      setProduct(res_data)
+    })
   }, [])
 
   useEffect(() => {
@@ -51,12 +49,9 @@ function Product({
     }
 
     api
-      .delete(
-        'https://tnzcreationsinventory.up.railway.app/api/wishlist/remove',
-        {
-          data: data_to_post,
-        }
-      )
+      .delete('/api/wishlist/remove', {
+        data: data_to_post,
+      })
       .then((response) => {
         if (response.status === 200) {
           // Remove the deleted item from the products state
@@ -71,12 +66,9 @@ function Product({
       const imageSources = await Promise.all(
         product.images.map((image) =>
           api
-            .get(
-              `https://tnzcreationsinventory.up.railway.app/images/uploads/${image}`,
-              {
-                responseType: 'arraybuffer',
-              }
-            )
+            .get(`/images/uploads/${image}`, {
+              responseType: 'arraybuffer',
+            })
             .then((response) => {
               const base64 = btoa(
                 new Uint8Array(response.data).reduce(

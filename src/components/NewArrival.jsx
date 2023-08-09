@@ -9,17 +9,13 @@ function NewArrival({ user }) {
   const navigateTo = useNavigate()
 
   useEffect(() => {
-    api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/filter?filterOption=latest`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          const response_data = response.data
-          const firstFourItems = response_data.slice(0, 4)
-          setNewArr([...firstFourItems])
-        }
-      })
+    api.get(`/api/filter?filterOption=latest`).then((response) => {
+      if (response.status === 200) {
+        const response_data = response.data
+        const firstFourItems = response_data.slice(0, 4)
+        setNewArr([...firstFourItems])
+      }
+    })
   }, [])
 
   useEffect(() => {
@@ -28,12 +24,9 @@ function NewArrival({ user }) {
       const imageSources = await Promise.all(
         newArr.map((product) =>
           api
-            .get(
-              `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.images[0]}`,
-              {
-                responseType: 'arraybuffer',
-              }
-            )
+            .get(`/images/uploads/${product.images[0]}`, {
+              responseType: 'arraybuffer',
+            })
             .then((response) => {
               const base64 = btoa(
                 new Uint8Array(response.data).reduce(

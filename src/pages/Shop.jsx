@@ -34,7 +34,7 @@ function Shop({
       if (selectedCategory) {
         try {
           const response = await api.get(
-            `https://tnzcreationsinventory.up.railway.app/api/products?categories=${selectedCategory}`
+            `/api/products?categories=${selectedCategory}`
           )
           if (response.status === 200) {
             const responseData = response.data
@@ -46,9 +46,7 @@ function Shop({
       } else {
         // Fetch all products if no category is selected
         try {
-          const response = await api.get(
-            'https://tnzcreationsinventory.up.railway.app/api/products'
-          )
+          const response = await api.get('/api/products')
           if (response.status === 200) {
             const responseData = response.data
             setProducts([...responseData])
@@ -68,12 +66,9 @@ function Shop({
       const imageSources = await Promise.all(
         products.map((product) =>
           api
-            .get(
-              `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.images[0]}`,
-              {
-                responseType: 'arraybuffer',
-              }
-            )
+            .get(`/images/uploads/${product.images[0]}`, {
+              responseType: 'arraybuffer',
+            })
             .then((response) => {
               const base64 = btoa(
                 new Uint8Array(response.data).reduce(
@@ -107,12 +102,9 @@ function Shop({
     }
 
     api
-      .delete(
-        'https://tnzcreationsinventory.up.railway.app/api/wishlist/remove',
-        {
-          data: data_to_post,
-        }
-      )
+      .delete('/api/wishlist/remove', {
+        data: data_to_post,
+      })
       .then((response) => {
         if (response.status === 200) {
           // Remove the deleted item from the products state

@@ -27,10 +27,10 @@ const RouteSwitch = () => {
 
   useEffect(() => {
     api
-      .get('https://tnzcreationsinventory.up.railway.app/api/user')
+      .get('/api/user')
       .then((response) => {
         if (response.status === 200) {
-          setUser(response.data)
+          setUser({ ...response.data, expired: false })
         }
       })
       .catch((error) => {
@@ -44,26 +44,18 @@ const RouteSwitch = () => {
   }, [])
 
   useEffect(() => {
-    if (!loading && user) {
-      api
-        .get(
-          `https://tnzcreationsinventory.up.railway.app/api/wishlist?email=${user.email}`
-        )
-        .then((res) => {
-          setWishlist(res.data)
-        })
+    if (!loading && !user.expired) {
+      api.get(`/api/wishlist?email=${user.email}`).then((res) => {
+        setWishlist(res.data)
+      })
     }
   }, [user, loading])
 
   useEffect(() => {
-    if (!loading && user) {
-      api
-        .get(
-          `https://tnzcreationsinventory.up.railway.app/api/cart-items?email=${user.email}`
-        )
-        .then((res) => {
-          setCart(res.data)
-        })
+    if (!loading && !user.expired) {
+      api.get(`/api/cart-items?email=${user.email}`).then((res) => {
+        setCart(res.data)
+      })
     }
   }, [user, loading])
 

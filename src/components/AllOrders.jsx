@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import api from '../api'
 
 function AllOrders({ user }) {
   const [orders, setOrders] = useState([])
@@ -9,15 +9,11 @@ function AllOrders({ user }) {
   const navigateTo = useNavigate()
 
   useEffect(() => {
-    axios
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/${user.email}/orders`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          setOrders([...response.data])
-        }
-      })
+    api.get(`/api/${user.email}/orders`).then((response) => {
+      if (response.status === 200) {
+        setOrders([...response.data])
+      }
+    })
   }, [user])
 
   useEffect(() => {
@@ -29,13 +25,10 @@ function AllOrders({ user }) {
             const products = order.products.map((product) => product.product)
             const imageSources = await Promise.all(
               products.map((product) =>
-                axios
-                  .get(
-                    `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.images[0]}`,
-                    {
-                      responseType: 'arraybuffer',
-                    }
-                  )
+                api
+                  .get(`/images/uploads/${product.images[0]}`, {
+                    responseType: 'arraybuffer',
+                  })
                   .then((response) => {
                     const base64 = btoa(
                       new Uint8Array(response.data).reduce(

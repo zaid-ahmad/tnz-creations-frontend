@@ -25,10 +25,7 @@ const SelectColorModal = ({
     }
 
     api
-      .post(
-        'https://tnzcreationsinventory.up.railway.app/api/cart/add',
-        post_data
-      )
+      .post('/api/cart/add', post_data)
       .then((response) => {
         if (response.status === 200) {
           setCartCount(cartCount + 1)

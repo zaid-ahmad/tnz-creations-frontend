@@ -9,17 +9,13 @@ function AccountComp({ user }) {
   const navigateTo = useNavigate()
 
   useEffect(() => {
-    api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/address/${user.email}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setAddresses([...response.data])
-        } else {
-          setMessage('No addresses found. Please add one.')
-        }
-      })
+    api.get(`/api/address/${user.email}`).then((response) => {
+      if (response.data.length > 0) {
+        setAddresses([...response.data])
+      } else {
+        setMessage('No addresses found. Please add one.')
+      }
+    })
   }, [user])
 
   const handleEditClick = (id) => {

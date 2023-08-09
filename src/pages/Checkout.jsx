@@ -29,9 +29,7 @@ function Checkout({
 
   useEffect(() => {
     api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/cart/info?email=${user.email}`
-      )
+      .get(`/api/cart/info?email=${user.email}`)
       .then((response) => {
         if (response.status === 200) {
           setOrderData(response.data)

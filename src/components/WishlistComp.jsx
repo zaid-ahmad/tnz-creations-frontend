@@ -17,9 +17,7 @@ function WishlistComp({
 
   useEffect(() => {
     api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/wishlist-products?email=${user.email}`
-      )
+      .get(`/api/wishlist-products?email=${user.email}`)
       .then((response) => {
         if (response.status === 200) {
           setProducts([...response.data])
@@ -35,12 +33,9 @@ function WishlistComp({
     const fetchImages = async () => {
       const imageSources = await Promise.all(
         products.map(async (product) => {
-          const response = await axios.get(
-            `https://tnzcreationsinventory.up.railway.app/images/uploads/${product.image}`,
-            {
-              responseType: 'arraybuffer',
-            }
-          )
+          const response = await axios.get(`/images/uploads/${product.image}`, {
+            responseType: 'arraybuffer',
+          })
           const base64 = btoa(
             new Uint8Array(response.data).reduce(
               (data, byte) => data + String.fromCharCode(byte),
@@ -64,12 +59,9 @@ function WishlistComp({
     }
 
     axios
-      .delete(
-        'https://tnzcreationsinventory.up.railway.app/api/wishlist/remove',
-        {
-          data: data_to_post,
-        }
-      )
+      .delete('/api/wishlist/remove', {
+        data: data_to_post,
+      })
       .then((response) => {
         if (response.status === 200) {
           // Remove the deleted item from the products state

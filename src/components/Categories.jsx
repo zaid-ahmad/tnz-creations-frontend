@@ -15,16 +15,16 @@ import LanternImg from '../assets/cat-cover/img14.png'
 import ChimesImg from '../assets/cat-cover/img15.png'
 
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import api from '../api'
 
 function Categories() {
   const [categories, setCategories] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios
-      .get('https://tnzcreationsinventory.up.railway.app/api/categories')
+    api
+      .get('/api/categories')
       .then((response) => {
         if (response.status === 200) {
           const responseData = response.data
@@ -47,7 +47,7 @@ function Categories() {
         <h2 className='text-2xl font-medium text-gray-800 uppercase mb-6'>
           shop by category
         </h2>
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='flex flex-col md:grid md:grid-cols-3 gap-3'>
           {categories.map((category) => {
             let image
 
@@ -114,12 +114,12 @@ function Categories() {
             }
             return (
               <div
-                className='relative rounded-sm overflow-hidden group'
+                className='relative rounded-sm overflow-hidden'
                 key={category._id}
                 onClick={() => handleCategoryClick(category.name)}
               >
                 <img src={image} alt='category 1' className='w-full' />
-                <p className='cursor-pointer absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-3xl text-white font-roboto font-medium group-hover:bg-opacity-60 transition'>
+                <p className='cursor-pointer absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center text-2xl text-center text-white font-roboto font-medium group-hover:bg-opacity-60 transition'>
                   {category.name}
                 </p>
               </div>

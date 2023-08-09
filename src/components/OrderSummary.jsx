@@ -1,4 +1,4 @@
-import axios from 'axios'
+import api from '../api'
 import { useEffect, useState } from 'react'
 /* eslint-disable react/prop-types */
 
@@ -10,9 +10,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
   const initPayment = async (data) => {
     let key
 
-    axios
-      .get('https://tnzcreationsinventory.up.railway.app/payment/apiInfo')
-      .then((response) => (key = response.data))
+    api.get('/payment/apiInfo').then((response) => (key = response.data))
 
     const options = {
       key,
@@ -23,7 +21,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
       image:
         'https://images.all-free-download.com/images/graphiclarge/cat_cat_face_cats_eyes_240527.jpg',
       order_id: data.id,
-      callback_url: `https://tnzcreationsinventory.up.railway.app/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
+      callback_url: `/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
       prefill: {
         name: user.name,
         email: user.email,
@@ -41,13 +39,10 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
     try {
       if (selectedOption.length > 0) {
         const id = orderData._id
-        const { data } = await axios.post(
-          'https://tnzcreationsinventory.up.railway.app/payment/orders',
-          {
-            productId: id,
-            shippingCharges,
-          }
-        )
+        const { data } = await api.post('/payment/orders', {
+          productId: id,
+          shippingCharges,
+        })
         initPayment(data.data)
       } else {
         setAddressMessage('Please select an address.')
