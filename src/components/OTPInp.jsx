@@ -32,15 +32,11 @@ function EmailVerificationComp() {
 
   const handleResendOTP = () => {
     if (isClickable) {
-      api
-        .post(
-          `https://tnzcreationsinventory.up.railway.app/api/generate-otp/${email}`
-        )
-        .then((res) => {
-          if (res.status == 200) {
-            alert('OTP Sent Again')
-          }
-        })
+      api.post(`/api/generate-otp/${email}`).then((res) => {
+        if (res.status == 200) {
+          alert('OTP Sent Again')
+        }
+      })
       setIsClickable(false)
       setTimer(5 * 60)
     }
@@ -59,7 +55,7 @@ function EmailVerificationComp() {
       OTP,
     }
     api
-      .post(`https://tnzcreationsinventory.up.railway.app/api/verify-otp`, data)
+      .post(`/api/verify-otp`, data)
       .then((response) => {
         if (response.status === 200) {
           navigateTo(`/`)

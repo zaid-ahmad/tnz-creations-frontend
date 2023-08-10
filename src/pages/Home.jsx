@@ -7,6 +7,7 @@ import Categories from '../components/Categories'
 import NewArrival from '../components/NewArrival'
 import Footer from '../components/Footer'
 import { useState, useEffect } from 'react'
+import api from '../api'
 
 function Home({
   user,
@@ -28,6 +29,24 @@ function Home({
     setCartCount(cart.length)
   }, [cart])
 
+  const delete_from_wishlist = (id) => {
+    const data_to_post = {
+      email: user.email,
+      itemId: id,
+    }
+
+    api
+      .delete('/api/wishlist/remove', {
+        data: data_to_post,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          // Remove the deleted item from the products state
+          setWishlistCount(wishlistCount - 1)
+        }
+      })
+  }
+
   return (
     <>
       <Header
@@ -43,7 +62,14 @@ function Home({
       <Banner />
       <Features />
       <Categories />
-      <NewArrival />
+      <NewArrival
+        user={user}
+        wishlistCount={wishlistCount}
+        cartCount={cartCount}
+        setWishlistCount={setWishlistCount}
+        setCartCount={setCartCount}
+        deleteFromWishlist={delete_from_wishlist}
+      />
       <Footer />
     </>
   )

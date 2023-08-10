@@ -23,14 +23,11 @@ const OrderItem = ({
     setQty(updatedQty) // Update the local state immediately
     updateProductQuantity(product.product._id, updatedQty)
 
-    api.put(
-      `https://tnzcreationsinventory.up.railway.app/api/cart/${product.product._id}/update-quantity`,
-      {
-        quantity: updatedQty,
-        email: user.email,
-        color: product.color,
-      }
-    )
+    api.put(`/api/cart/${product.product._id}/update-quantity`, {
+      quantity: updatedQty,
+      email: user.email,
+      color: product.color,
+    })
   }
 
   const decreaseQty = async () => {
@@ -38,22 +35,18 @@ const OrderItem = ({
       const updatedQty = qty - 1
       setQty(updatedQty)
       updateProductQuantity(product.product._id, updatedQty)
-      api.put(
-        `https://tnzcreationsinventory.up.railway.app/api/cart/${product.product._id}/update-quantity`,
-        {
-          quantity: updatedQty,
-          email: user.email,
-          color: product.color,
-        }
-      )
+      api.put(`/api/cart/${product.product._id}/update-quantity`, {
+        quantity: updatedQty,
+        email: user.email,
+        color: product.color,
+      })
     }
   }
 
   return (
     <div key={product.product.id}>
       {!loaded && <Loading />}
-
-      <div className='flex items-center justify-between border p-4 border-gray-200 rounded w-[650px]'>
+      <div className='flex items-center justify-between border p-4 border-gray-200 rounded w-full'>
         <div className='flex items-center gap-7 w-full'>
           <div className='w-36'>
             <img

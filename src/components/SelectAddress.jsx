@@ -3,13 +3,6 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
 
-// ✅ make address form
-// ✅ fix amount update upon removing item from cart
-// make sure that the quantity selected in the bag does not exceed the stock
-// allow user to select an address and place order (save to db for now, payment at last)
-// allow user to add, view, edit/delete addresses
-// allow user to add product to cart from the shop page and product detail page
-
 function SelectAddress({
   user,
   cartCount,
@@ -23,17 +16,13 @@ function SelectAddress({
   const navigateTo = useNavigate()
 
   useEffect(() => {
-    api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/address/${user.email}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          setAddresses([...response.data])
-        } else {
-          setMessage('No addresses found. Please add one.')
-        }
-      })
+    api.get(`/api/address/${user.email}`).then((response) => {
+      if (response.data.length > 0) {
+        setAddresses([...response.data])
+      } else {
+        setMessage('No addresses found. Please add one.')
+      }
+    })
   }, [user])
 
   const handleOptionChange = (event) => {

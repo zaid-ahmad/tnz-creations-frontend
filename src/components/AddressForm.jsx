@@ -30,7 +30,7 @@ function AddressForm({ user }) {
 
     api
       .post(
-        `https://tnzcreationsinventory.up.railway.app/api/address/${user.email}/new`,
+        `/api/address/${user.email}/new`,
         data_to_post
       )
       .then((response) => {

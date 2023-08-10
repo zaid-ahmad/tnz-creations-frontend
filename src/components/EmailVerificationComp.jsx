@@ -9,15 +9,11 @@ function EmailVerificationComp() {
   const navigateTo = useNavigate()
 
   const handleSubmit = () => {
-    api
-      .post(
-        `https://tnzcreationsinventory.up.railway.app/api/generate-otp/${email}`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          navigateTo(`/verification?user=${email}`)
-        }
-      })
+    api.post(`/api/generate-otp/${email}`).then((response) => {
+      if (response.status === 200) {
+        navigateTo(`/verification?user=${email}`)
+      }
+    })
   }
 
   return (

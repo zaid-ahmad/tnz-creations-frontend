@@ -16,9 +16,7 @@ function AEForm({ email, addressParam }) {
 
   useEffect(() => {
     api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/account/${email}/edit?address=${addressParam}`
-      )
+      .get(`/api/account/${email}/edit?address=${addressParam}`)
       .then((response) => {
         const data = response.data
         setName(data.name)
@@ -45,10 +43,7 @@ function AEForm({ email, addressParam }) {
     }
 
     api
-      .put(
-        `https://tnzcreationsinventory.up.railway.app/api/address/${email}/update?id=${addressParam}`,
-        data_to_post
-      )
+      .put(`/api/address/${email}/update?id=${addressParam}`, data_to_post)
       .then((response) => {
         if (response.status === 200) {
           navigateTo('/account')

@@ -27,16 +27,12 @@ function Products({
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
 
-    api
-      .get(
-        `https://tnzcreationsinventory.up.railway.app/api/filter?filterOption=${selectedValue}`
-      )
-      .then((response) => {
-        if (response.status === 200) {
-          const response_data = response.data
-          setProducts([...response_data])
-        }
-      })
+    api.get(`/api/filter?filterOption=${selectedValue}`).then((response) => {
+      if (response.status === 200) {
+        const response_data = response.data
+        setProducts([...response_data])
+      }
+    })
   }
   const handleImageLoad = () => {
     setImagesLoaded(true)
@@ -52,10 +48,7 @@ function Products({
       }
 
       api
-        .post(
-          'https://tnzcreationsinventory.up.railway.app/api/wishlist/add',
-          post_data
-        )
+        .post('/api/wishlist/add', post_data)
         .then((response) => {
           if (response.status === 200) {
             setMessage(response.data)
@@ -75,11 +68,9 @@ function Products({
       if (!showModal) {
         setShowModal(true)
         setId(id)
-        api
-          .get(`https://tnzcreationsinventory.up.railway.app/api/${id}/color`)
-          .then((response) => {
-            setProductColors([...response.data])
-          })
+        api.get(`/api/${id}/color`).then((response) => {
+          setProductColors([...response.data])
+        })
       }
     }
   }
@@ -91,7 +82,7 @@ function Products({
   return (
     <>
       {!imagesLoaded && <Loading />}
-      <div className='col-span-3'>
+      <div className='w-full'>
         <div className='flex items-center mb-4 justify-between'>
           <select
             name='sort'
@@ -173,7 +164,7 @@ function Products({
           )}
         </div>
 
-        <div className='grid md:grid-cols-3 grid-cols-2 gap-6'>
+        <div className='flex flex-col gap-6 md:grid md:grid-cols-3'>
           {products && products.length > 0 ? (
             products.map((product, index) => {
               return (
@@ -191,7 +182,7 @@ function Products({
                       />
                     </>
                   )}
-                  <div className='flex flex-col bg-white shadow rounded overflow-hidden group'>
+                  <div className='flex flex-col bg-white shadow rounded overflow-hidden group md:grid'>
                     <Link
                       to={`/products/${product._id}`}
                       title='View Product'
@@ -201,7 +192,7 @@ function Products({
                         <img
                           src={source[index]}
                           alt='product image'
-                          className='w-auto h-[350px]'
+                          className='aspect-square'
                           loading='lazy'
                           onLoad={handleImageLoad}
                         />

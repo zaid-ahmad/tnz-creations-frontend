@@ -31,10 +31,7 @@ function RegisterComp() {
       }
 
       api
-        .post(
-          'https://tnzcreationsinventory.up.railway.app/api/register',
-          user_data
-        )
+        .post('/api/register', user_data)
         .then((response) => {
           if (response.status == 200) {
             navigateTo(`/verify?user=${email}`)

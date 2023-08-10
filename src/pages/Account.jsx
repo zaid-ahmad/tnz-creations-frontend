@@ -46,12 +46,12 @@ function Account({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <div className='container grid grid-cols-100 mt-7 justify-items-start'>
+      <div className='container flex flex-col mt-7 items-start md:flex-row md:gap-5'>
         <div className='w-72  '>
           <Sidebar user={user} />
         </div>
-        <div className='w-[850px] justify-self-start '>
-          <h2 className='text-2xl font-medium mb-5'>Your Addresses</h2>
+        <div className='w-full p-5'>
+          <h2 className='text-2xl font-medium my-7'>Your Addresses</h2>
           <AccountComp user={user} />
         </div>
       </div>

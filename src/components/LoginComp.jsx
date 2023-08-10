@@ -20,7 +20,7 @@ function LoginComp() {
       }
 
       api
-        .post('https://tnzcreationsinventory.up.railway.app/api/login', data)
+        .post('/api/login', data)
         .then((response) => {
           if (response.status === 200) {
             navigateTo('/')

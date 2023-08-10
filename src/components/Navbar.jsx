@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 
-import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import api from '../api'
 
 function Navbar({ user }) {
   const [categories, setCategories] = useState([])
   const navigate = useNavigate()
 
   useEffect(() => {
-    axios
-      .get('https://tnzcreationsinventory.up.railway.app/api/categories')
+    api
+      .get('/api/categories')
       .then((response) => {
         if (response.status === 200) {
           const responseData = response.data
@@ -54,7 +54,7 @@ function Navbar({ user }) {
               </div>
             </div>
 
-            <div className='flex items-center justify-between flex-grow md:pl-12 py-5'>
+            <div className='flex items-center justify-center flex-grow md:pl-12 py-5 md:justify-between'>
               <div className='flex items-center space-x-6 capitalize'>
                 <a
                   href='/'
@@ -113,7 +113,7 @@ function Navbar({ user }) {
               </div>
             </div>
 
-            <div className='flex items-center justify-between flex-grow md:pl-12 py-5'>
+            <div className='flex items-center justify-center flex-grow md:pl-12 py-5 md:justify-between'>
               <div className='flex items-center space-x-6 capitalize'>
                 <a
                   href='/'
@@ -140,12 +140,6 @@ function Navbar({ user }) {
                   Contact us
                 </a>
               </div>
-              <a
-                href='/login'
-                className='text-gray-200 hover:text-white transition'
-              >
-                Login/Register
-              </a>
             </div>
           </div>
         </nav>

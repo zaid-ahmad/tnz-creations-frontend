@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { useSearchParams, useNavigate } from 'react-router-dom'
 import useWindowSize from 'react-use-window-size'
 import Confetti from 'react-confetti'
-import axios from 'axios'
+import api from '../api'
 
 function PaymentSuccess({ user, wishlist, cart }) {
   const [wishlistCount, setWishlistCount] = useState(wishlist.length)
@@ -27,11 +27,7 @@ function PaymentSuccess({ user, wishlist, cart }) {
   }, [cart])
 
   useEffect(() => {
-    axios
-      .post(
-        `https://tnzcreationsinventory.up.railway.app/api/paymentSucess/${user.email}`
-      )
-      .then(console.log('yay'))
+    api.post(`/api/paymentSucess/${user.email}`).then(console.log('yay'))
     const timeoutId = setTimeout(() => {
       setIsConfettiRunning(false)
       navigateTo('/shop')
