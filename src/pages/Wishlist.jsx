@@ -33,7 +33,7 @@ function Wishlist({ user, wishlist, cart }) {
               alt='Empty wishlist image'
               className='w-96'
             />
-            <div className='flex flex-col gap-2 items-center w-96'>
+            <div className='flex flex-col gap-2 items-center w-full'>
               <h2 className='text-2xl font-semibold text-zinc-600'>
                 Your Wishlist is Empty
               </h2>
@@ -53,8 +53,8 @@ function Wishlist({ user, wishlist, cart }) {
         </>
       ) : (
         <>
-          <div className='flex flex-col items-center my-10'>
-            <div>
+          <div className='flex flex-col items-start p-5 my-5 md:flex-row hi'>
+            <div className='w-full'>
               <WishlistComp
                 user={user}
                 setWishlistCount={setWishlistCount}

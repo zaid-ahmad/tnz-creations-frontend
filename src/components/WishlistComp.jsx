@@ -1,7 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react'
 import api from '../api'
-import axios from 'axios'
 import WishlistItem from './WishlistItem'
 
 function WishlistComp({
@@ -32,18 +31,21 @@ function WishlistComp({
     // Fetch images for each product and update the state
     const fetchImages = async () => {
       const imageSources = await Promise.all(
-        products.map(async (product) => {
-          const response = await axios.get(`/images/uploads/${product.image}`, {
-            responseType: 'arraybuffer',
-          })
-          const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
-              ''
-            )
-          )
-          return 'data:;base64,' + base64
-        })
+        products.map((product) =>
+          api
+            .get(`/images/uploads/${product.images[0]}`, {
+              responseType: 'arraybuffer',
+            })
+            .then((response) => {
+              const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                  (data, byte) => data + String.fromCharCode(byte),
+                  ''
+                )
+              )
+              return 'data:;base64,' + base64
+            })
+        )
       )
       setSource(imageSources)
     }
@@ -52,13 +54,12 @@ function WishlistComp({
   }, [products])
 
   const delete_from_wishlist = (id) => {
-    console.log('i got called')
     const data_to_post = {
       email: user.email,
       itemId: id,
     }
 
-    axios
+    api
       .delete('/api/wishlist/remove', {
         data: data_to_post,
       })
@@ -76,7 +77,7 @@ function WishlistComp({
   return (
     <>
       <h2 className='font-medium text-2xl mb-5'>Your Wishlist</h2>
-      <div className='col-span-9 space-y-4'>
+      <div className='w-full md:grid md:grid-cols-2 gap-2 lg:grid-cols-3 xl:grid-cols-4'>
         {products.map((product, index) => (
           <WishlistItem
             key={product.id}

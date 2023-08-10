@@ -10,7 +10,7 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
 
   useEffect(() => {
     api
-      .get(`/cart-items?email=${user.email}`)
+      .get(`/api/cart-items?email=${user.email}`)
       .then((response) => {
         if (response.status === 200) {
           setProducts([...response.data])
@@ -25,21 +25,21 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
     // Fetch images for each product and update the state
     const fetchImages = async () => {
       const imageSources = await Promise.all(
-        products.map(async (product) => {
-          const response = await api.get(
-            `/images/uploads/${product.product.images[0]}`,
-            {
+        products.map((product) =>
+          api
+            .get(`/images/uploads/${product.product.images[0]}`, {
               responseType: 'arraybuffer',
-            }
-          )
-          const base64 = btoa(
-            new Uint8Array(response.data).reduce(
-              (data, byte) => data + String.fromCharCode(byte),
-              ''
-            )
-          )
-          return 'data:;base64,' + base64
-        })
+            })
+            .then((response) => {
+              const base64 = btoa(
+                new Uint8Array(response.data).reduce(
+                  (data, byte) => data + String.fromCharCode(byte),
+                  ''
+                )
+              )
+              return 'data:;base64,' + base64
+            })
+        )
       )
       setSource(imageSources)
     }

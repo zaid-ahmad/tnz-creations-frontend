@@ -46,8 +46,7 @@ const OrderItem = ({
   return (
     <div key={product.product.id}>
       {!loaded && <Loading />}
-
-      <div className='flex items-center justify-between border p-4 border-gray-200 rounded w-[650px]'>
+      <div className='flex items-center justify-between border p-4 border-gray-200 rounded w-full'>
         <div className='flex items-center gap-7 w-full'>
           <div className='w-36'>
             <img

@@ -3,13 +3,13 @@
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import ProductDetail from '../components/ProductDetail'
-import Description from '../components/Description'
 // import RelatedProducts from '../components/RelatedProducts'
 import Footer from '../components/Footer'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import api from '../api'
 import NewArrival from '../components/NewArrival'
+import Description from '../components/Description'
 
 function Product({
   user,
@@ -98,18 +98,28 @@ function Product({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <ProductDetail
-        product={product}
-        user={user}
-        source={source}
-        deleteFromWishlist={delete_from_wishlist}
-        wishlistCount={wishlistCount}
-        setWishlistCount={setWishlistCount}
-        cartCount={cartCount}
-        setCartCount={setCartCount}
-      />
-      <Description product={product} />
-      <NewArrival />
+      <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-16 sm:gap-[35rem]'>
+          <div>
+            <ProductDetail
+              product={product}
+              user={user}
+              source={source}
+              deleteFromWishlist={delete_from_wishlist}
+              wishlistCount={wishlistCount}
+              setWishlistCount={setWishlistCount}
+              cartCount={cartCount}
+              setCartCount={setCartCount}
+            />
+          </div>
+          <div>
+            <Description product={product} />
+          </div>
+        </div>
+        <div>
+          <NewArrival />
+        </div>
+      </div>
       <Footer />
     </>
   )

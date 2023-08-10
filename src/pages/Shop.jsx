@@ -95,7 +95,6 @@ function Shop({
   }, [cart])
 
   const delete_from_wishlist = (id) => {
-    console.log('i got called')
     const data_to_post = {
       email: user.email,
       itemId: id,
@@ -136,7 +135,7 @@ function Shop({
         <p className='text-gray-600 font-medium'>Shop</p>
       </div>
 
-      <div className='grid md:grid-cols-4 grid-cols-2 gap-3 pt-4 pb-16 items-start justify-items-center px-5'>
+      <div className='flex flex-col gap-3 pt-4 pb-16 items-start justify-items-center px-5 lg:flex-row'>
         <Drawer setProducts={setProducts} />
         <Products
           products={products}

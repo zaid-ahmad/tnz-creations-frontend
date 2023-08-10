@@ -54,7 +54,7 @@ function Navbar({ user }) {
               </div>
             </div>
 
-            <div className='flex items-center justify-between flex-grow md:pl-12 py-5'>
+            <div className='flex items-center justify-center flex-grow md:pl-12 py-5 md:justify-between'>
               <div className='flex items-center space-x-6 capitalize'>
                 <a
                   href='/'
@@ -113,7 +113,7 @@ function Navbar({ user }) {
               </div>
             </div>
 
-            <div className='flex items-center justify-between flex-grow md:pl-12 py-5'>
+            <div className='flex items-center justify-center flex-grow md:pl-12 py-5 md:justify-between'>
               <div className='flex items-center space-x-6 capitalize'>
                 <a
                   href='/'
@@ -140,12 +140,6 @@ function Navbar({ user }) {
                   Contact us
                 </a>
               </div>
-              <a
-                href='/login'
-                className='text-gray-200 hover:text-white transition border rounded-md p-2 md:border-none '
-              >
-                Login
-              </a>
             </div>
           </div>
         </nav>

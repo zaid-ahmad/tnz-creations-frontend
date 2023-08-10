@@ -74,7 +74,7 @@ function Drawer({ setProducts }) {
     <>
       <div
         id='drawer-example'
-        className='col-span-1 rounded-md h-[620px] p-4 overflow-y-auto bg-white w-80 shadow-md'
+        className=' rounded-md h-auto p-4 overflow-y-auto w-full bg-white md:w-96 shadow-md'
         tabIndex='-1'
         aria-labelledby='drawer-label'
       >

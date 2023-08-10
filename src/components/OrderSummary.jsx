@@ -21,7 +21,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
       image:
         'https://images.all-free-download.com/images/graphiclarge/cat_cat_face_cats_eyes_240527.jpg',
       order_id: data.id,
-      callback_url: `/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
+      callback_url: `http://localhost:3000/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
       prefill: {
         name: user.name,
         email: user.email,
@@ -117,7 +117,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
             <p>
               ₹
               {orderData && orderData.totalAmount
-                ? Number(
+                ? Math.ceil(
                     Math.ceil(orderData.totalAmount * 0.18) +
                       orderData.totalAmount +
                       shippingCharges

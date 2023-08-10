@@ -64,7 +64,7 @@ function Checkout({
         <>
           <div className='flex flex-col items-center my-24'>
             <img src={EmptyBagImg} alt='Empty cart image' className='w-96' />
-            <h2 className='text-xl w-[490px] font-semibold text-zinc-600 text-center'>
+            <h2 className='text-xl w-2/3 md:w-full font-semibold text-zinc-600 text-center'>
               Looks like you have not added anything to your bag.
             </h2>
             <p className='font-medium text-zinc-600'>
@@ -81,7 +81,7 @@ function Checkout({
         </>
       ) : (
         <>
-          <div className='container grid grid-cols-2 justify-items-center items-start pb-10 pt-10 '>
+          <div className='container flex flex-col-reverse gap-5 md:grid md:grid-cols-2 justify-items-center items-start pb-10 pt-10 '>
             <div className='flex flex-col gap-5'>
               <CheckoutItems
                 user={user}

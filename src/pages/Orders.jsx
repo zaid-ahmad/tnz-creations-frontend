@@ -38,11 +38,11 @@ function Orders({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <div className='container grid grid-cols-100 mt-7 justify-items-start'>
+      <div className='container  flex flex-col mt-7 items-start md:flex-row md:gap-5'>
         <div className='w-72  '>
           <Sidebar user={user} />
         </div>
-        <div className='w-[850px] justify-self-start '>
+        <div className='w-full pt-5 '>
           <h2 className='text-2xl font-medium mb-5'>Past Orders</h2>
           <AllOrders user={user} />
         </div>

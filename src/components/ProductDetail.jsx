@@ -105,7 +105,7 @@ function ProductDetail({
         <p className='text-gray-600 font-medium'>{product.name}</p>
       </div>
 
-      <div className='container grid grid-cols-2 gap-6 h-screen'>
+      <div className='container flex flex-col md:grid md:grid-cols-2 gap-6 h-screen'>
         <div>
           <img
             src={bigImage}
