@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import api from '../api'
 import { useState } from 'react'
 import SelectColorModal from './SelectColorModal'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const WishlistItem = ({
   user,
@@ -97,7 +98,7 @@ const WishlistItem = ({
                     deleteFromWishlist(product._id)
                   }}
                 >
-                  <i className='fa fa-solid fa-trash'></i>
+                  <FontAwesomeIcon icon='fa fa-solid fa-trash' />
                 </div>
               </div>
             </div>

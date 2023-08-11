@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import api from '../api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function ProductDetail({
   product,
@@ -93,14 +94,14 @@ function ProductDetail({
     <>
       <div className='container py-4 flex items-center gap-3'>
         <Link to='/' className='text-primary text-base'>
-          <i className='fa fa-solid fa-house'></i>
+          <FontAwesomeIcon icon='fa-solid fa-house' />
         </Link>
         <span className='text-sm text-gray-400'>
-          <i className='fa fa-solid fa-chevron-right'></i>
+          <FontAwesomeIcon icon='fa-solid fa-chevron-right' />
         </span>
         <Link to={'/shop'}>Shop</Link>
         <span className='text-sm text-gray-400'>
-          <i className='fa fa-solid fa-chevron-right'></i>
+          <FontAwesomeIcon icon='fa-solid fa-chevron-right' />
         </span>
         <p className='text-gray-600 font-medium'>{product.name}</p>
       </div>
@@ -216,13 +217,13 @@ function ProductDetail({
               onClick={() => addToCart(product._id)}
               className='bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition'
             >
-              <i className='fa fa-solid fa-bag-shopping' /> Add to cart
+              <FontAwesomeIcon icon='fa-solid fa-bag-shopping' /> Add to cart
             </button>
             <button
               onClick={() => addToWishlist(product._id)}
               className='border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition'
             >
-              <i className='fa fa-solid fa-heart' /> Wishlist
+              <FontAwesomeIcon icon='fa-solid fa-heart' /> Wishlist
             </button>
           </div>
         </div>

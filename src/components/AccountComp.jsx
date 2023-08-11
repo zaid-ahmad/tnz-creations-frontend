@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function AccountComp({ user }) {
   const [addresses, setAddresses] = useState([])
@@ -62,7 +63,7 @@ function AccountComp({ user }) {
         </div>
         <div onClick={() => navigateTo(`/account/${user.email}/address/new`)}>
           <span className='mt-5 mb-10 flex items-center gap-2 opacity-75 cursor-pointer'>
-            <i className='fa fa-solid fa-circle-plus fa-lg'></i>
+            <FontAwesomeIcon icon='fa-solid fa-circle-plus fa-lg' />
             <p>Add New Address</p>
           </span>
         </div>
