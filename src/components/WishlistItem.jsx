@@ -5,6 +5,8 @@ import { useState } from 'react'
 import SelectColorModal from './SelectColorModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import { faTrash } from '@fortawesome/free-solid-svg-icons'
+
 const WishlistItem = ({
   user,
   product,
@@ -98,7 +100,7 @@ const WishlistItem = ({
                     deleteFromWishlist(product._id)
                   }}
                 >
-                  <FontAwesomeIcon icon='fa fa-solid fa-trash' />
+                  <FontAwesomeIcon icon={faTrash} />
                 </div>
               </div>
             </div>

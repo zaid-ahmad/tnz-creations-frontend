@@ -5,6 +5,14 @@ import { Link, useNavigate } from 'react-router-dom'
 import api from '../api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+import {
+  faHouse,
+  faChevronRight,
+  faBagShopping,
+} from '@fortawesome/free-solid-svg-icons'
+
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
+
 function ProductDetail({
   product,
   user,
@@ -94,14 +102,14 @@ function ProductDetail({
     <>
       <div className='container py-4 flex items-center gap-3'>
         <Link to='/' className='text-primary text-base'>
-          <FontAwesomeIcon icon='fa-solid fa-house' />
+          <FontAwesomeIcon icon={faHouse} />
         </Link>
         <span className='text-sm text-gray-400'>
-          <FontAwesomeIcon icon='fa-solid fa-chevron-right' />
+          <FontAwesomeIcon icon={faChevronRight} />
         </span>
         <Link to={'/shop'}>Shop</Link>
         <span className='text-sm text-gray-400'>
-          <FontAwesomeIcon icon='fa-solid fa-chevron-right' />
+          <FontAwesomeIcon icon={faChevronRight} />
         </span>
         <p className='text-gray-600 font-medium'>{product.name}</p>
       </div>
@@ -217,13 +225,13 @@ function ProductDetail({
               onClick={() => addToCart(product._id)}
               className='bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition'
             >
-              <FontAwesomeIcon icon='fa-solid fa-bag-shopping' /> Add to cart
+              <FontAwesomeIcon icon={faBagShopping} /> Add to cart
             </button>
             <button
               onClick={() => addToWishlist(product._id)}
               className='border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition'
             >
-              <FontAwesomeIcon icon='fa-solid fa-heart' /> Wishlist
+              <FontAwesomeIcon icon={faHeart} /> Wishlist
             </button>
           </div>
         </div>
