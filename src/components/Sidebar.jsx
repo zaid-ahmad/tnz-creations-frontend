@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import api from '../api'
 import { Link, useNavigate } from 'react-router-dom'
 
@@ -29,7 +30,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa fa-solid fa-location-dot'></i>
+              <FontAwesomeIcon icon='fa-solid fa-location-dot' />
             </span>
             Manage addresses
           </a>
@@ -38,7 +39,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa fa-solid fa-box-archive'></i>
+              <FontAwesomeIcon icon='fa-solid fa-box-archive' />
             </span>
             My order history
           </Link>
@@ -50,7 +51,7 @@ function Sidebar({ user }) {
             className='relative text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa fa-regular fa-heart'></i>
+              <FontAwesomeIcon icon='fa-regular fa-heart' />
             </span>
             My wishlist
           </a>
@@ -62,7 +63,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa fa-solid fa-right-from-bracket'></i>
+              <FontAwesomeIcon icon='fa-solid fa-right-from-bracket' />
             </span>
             Logout
           </button>

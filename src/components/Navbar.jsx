@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function Navbar({ user }) {
   const [categories, setCategories] = useState([])
@@ -34,7 +35,7 @@ function Navbar({ user }) {
           <div className='container flex'>
             <div className='px-8 py-4 md:flex items-center cursor-pointer relative group hidden'>
               <span className='text-white'>
-                <i className='fa fa-solid fa-bars'></i>
+                <FontAwesomeIcon icon='fa-solid fa-bars' />
               </span>
               <span className='capitalize ml-2 text-white'>All Categories</span>
 
@@ -93,7 +94,7 @@ function Navbar({ user }) {
           <div className='container flex'>
             <div className='px-8 py-4 md:flex items-center cursor-pointer relative group hidden'>
               <span className='text-white'>
-                <i className='fa fa-solid fa-bars'></i>
+                <FontAwesomeIcon icon='fa-solid fa-bars' />
               </span>
               <span className='capitalize ml-2 text-white'>All Categories</span>
 
