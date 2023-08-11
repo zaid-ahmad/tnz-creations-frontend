@@ -1,12 +1,15 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, Link } from 'react-router-dom'
 
 import Header from '../components/Header'
 import Navbar from '../components/Navbar'
 import Drawer from '../components/Drawer'
 import Products from '../components/Products'
 import Footer from '../components/Footer'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHouse, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 
 import api from '../api'
 
@@ -126,13 +129,13 @@ function Shop({
       <Navbar user={user} />
 
       <div className='container py-4 flex items-center gap-3'>
-        <a href='/' className='text-primary text-base'>
-          <i className='fa-solid fa-house'></i>
-        </a>
+        <Link to='/' className='text-primary text-base'>
+          <FontAwesomeIcon icon={faHouse} />
+        </Link>
         <span className='text-sm text-gray-400'>
-          <i className='fa-solid fa-chevron-right'></i>
+          <FontAwesomeIcon icon={faChevronRight} />
         </span>
-        <p className='text-gray-600 font-medium'>Shop</p>
+        <Link to={'/shop'}>Shop</Link>
       </div>
 
       <div className='flex flex-col gap-3 pt-4 pb-16 items-start justify-items-center px-5 lg:flex-row'>

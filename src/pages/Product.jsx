@@ -98,9 +98,9 @@ function Product({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <div className='flex flex-col gap-3'>
-        <div className='flex flex-col gap-16 sm:gap-[35rem]'>
-          <div>
+      <div className='flex flex-col'>
+        <div className='flex flex-col gap-52 md:gap-0 lg:gap-20'>
+          <div className='container'>
             <ProductDetail
               product={product}
               user={user}
@@ -112,12 +112,10 @@ function Product({
               setCartCount={setCartCount}
             />
           </div>
-          <div>
+          <div className='container mb-7'>
             <Description product={product} />
+            <NewArrival />
           </div>
-        </div>
-        <div>
-          <NewArrival />
         </div>
       </div>
       <Footer />
