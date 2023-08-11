@@ -133,14 +133,14 @@ function NewArrival({
                         className='text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition'
                         title='view product'
                       >
-                        <i className='fa-solid fa-magnifying-glass'></i>
+                        <i className='fa fa-solid fa-magnifying-glass'></i>
                       </a>
                       <button
                         onClick={() => addToWishlist(prod._id)}
                         className='text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition'
                         title='add to wishlist'
                       >
-                        <i className='fa-solid fa-heart'></i>
+                        <i className='fa fa-solid fa-heart'></i>
                       </button>
                     </div>
                   </div>

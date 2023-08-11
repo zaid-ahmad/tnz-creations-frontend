@@ -97,7 +97,7 @@ const WishlistItem = ({
                     deleteFromWishlist(product._id)
                   }}
                 >
-                  <i className='fa-solid fa-trash'></i>
+                  <i className='fa fa-solid fa-trash'></i>
                 </div>
               </div>
             </div>

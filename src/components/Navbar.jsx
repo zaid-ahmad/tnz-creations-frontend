@@ -34,7 +34,7 @@ function Navbar({ user }) {
           <div className='container flex'>
             <div className='px-8 py-4 md:flex items-center cursor-pointer relative group hidden'>
               <span className='text-white'>
-                <i className='fa-solid fa-bars'></i>
+                <i className='fa fa-solid fa-bars'></i>
               </span>
               <span className='capitalize ml-2 text-white'>All Categories</span>
 
@@ -93,7 +93,7 @@ function Navbar({ user }) {
           <div className='container flex'>
             <div className='px-8 py-4 md:flex items-center cursor-pointer relative group hidden'>
               <span className='text-white'>
-                <i className='fa-solid fa-bars'></i>
+                <i className='fa fa-solid fa-bars'></i>
               </span>
               <span className='capitalize ml-2 text-white'>All Categories</span>
 

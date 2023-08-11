@@ -102,7 +102,7 @@ const OrderItem = ({
             deleteFromOrder(product.product._id)
           }}
         >
-          <i className='fa-solid fa-xmark'></i>
+          <i className='fa fa-solid fa-xmark'></i>
         </div>
       </div>
     </div>

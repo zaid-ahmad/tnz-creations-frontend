@@ -29,7 +29,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa-solid fa-location-dot'></i>
+              <i className='fa fa-solid fa-location-dot'></i>
             </span>
             Manage addresses
           </a>
@@ -38,7 +38,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa-solid fa-box-archive'></i>
+              <i className='fa fa-solid fa-box-archive'></i>
             </span>
             My order history
           </Link>
@@ -50,7 +50,7 @@ function Sidebar({ user }) {
             className='relative text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa-regular fa-heart'></i>
+              <i className='fa fa-regular fa-heart'></i>
             </span>
             My wishlist
           </a>
@@ -62,7 +62,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <i className='fa-solid fa-right-from-bracket'></i>
+              <i className='fa fa-solid fa-right-from-bracket'></i>
             </span>
             Logout
           </button>
