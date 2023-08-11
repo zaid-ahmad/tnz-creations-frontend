@@ -5,6 +5,12 @@ import { useState } from 'react'
 import api from '../api'
 import Hamburger from 'hamburger-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faMagnifyingGlass,
+  faBagShopping,
+} from '@fortawesome/free-solid-svg-icons'
+
+import { faHeart, faUser } from '@fortawesome/free-regular-svg-icons'
 
 function Header({ user, wishlistCount, cartCount, setSearchResult }) {
   const navigateTo = useNavigate()
@@ -57,7 +63,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
 
             <div className='hidden w-full max-w-xl relative md:flex md:w-3/6'>
               <span className='absolute left-4 top-3 text-lg text-gray-400'>
-                <FontAwesomeIcon icon='fa-solid fa-magnifying-glass' />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </span>
               <form
                 onSubmit={(event) => searchFunc(event)}
@@ -89,7 +95,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   className='text-center text-gray-700 hover:text-primary transition relative'
                 >
                   <div className='text-2xl'>
-                    <FontAwesomeIcon icon='fa-regular fa-heart' />
+                    <FontAwesomeIcon icon={faHeart} />
                   </div>
                   <div className='text-xs leading-3'>Wishlist</div>
                   {wishlistCount > 0 ? (
@@ -107,7 +113,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   className='text-center text-gray-700 hover:text-primary transition relative'
                 >
                   <div className='text-2xl'>
-                    <FontAwesomeIcon icon='fa-solid fa-bag-shopping' />
+                    <FontAwesomeIcon icon={faBagShopping} />
                   </div>
                   <div className='text-xs leading-3'>Cart</div>
                   {cartCount > 0 ? (
@@ -125,7 +131,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   className='text-center text-gray-700 hover:text-primary transition relative'
                 >
                   <div className='text-2xl'>
-                    <FontAwesomeIcon icon='fa-regular fa-user' />
+                    <FontAwesomeIcon icon={faUser} />
                   </div>
                   <div className='text-xs leading-3'>Account</div>
                 </a>
@@ -158,7 +164,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
 
             <div className='hidden w-full max-w-xl relative md:flex md:w-3/6'>
               <span className='absolute left-4 top-3 text-lg text-gray-400'>
-                <FontAwesomeIcon icon='fa-solid fa-magnifying-glass' />
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
               </span>
               <form
                 onSubmit={(event) => searchFunc(event)}
@@ -190,7 +196,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   className='text-center text-gray-700 hover:text-primary transition relative'
                 >
                   <div className='text-2xl'>
-                    <FontAwesomeIcon icon='fa-regular fa-heart' />
+                    <FontAwesomeIcon icon={faHeart} />
                   </div>
                   <div className='text-xs leading-3'>Wishlist</div>
                   {wishlistCount > 0 ? (
@@ -208,7 +214,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                   className='text-center text-gray-700 hover:text-primary transition relative'
                 >
                   <div className='text-2xl'>
-                    <FontAwesomeIcon icon='solid fa-bag-shopping' />
+                    <FontAwesomeIcon icon={faBagShopping} />
                   </div>
                   <div className='text-xs leading-3'>Cart</div>
                   {cartCount > 0 ? (
@@ -223,7 +229,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
                 </Link>
                 <Link
                   to='/login'
-                  className='text-center text-gray-700 hover:text-primary transition relative bg-primary rounded p-2 text-white'
+                  className='text-center transition relative bg-primary rounded p-2 text-white'
                 >
                   Login
                 </Link>

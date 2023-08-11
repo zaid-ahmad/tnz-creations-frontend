@@ -3,6 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import api from '../api'
 import { Link, useNavigate } from 'react-router-dom'
 
+import {
+  faRightFromBracket,
+  faLocationDot,
+  faBoxArchive,
+} from '@fortawesome/free-solid-svg-icons'
+import { faHeart } from '@fortawesome/free-regular-svg-icons'
+
 function Sidebar({ user }) {
   const navigateTo = useNavigate()
 
@@ -30,7 +37,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <FontAwesomeIcon icon='fa-solid fa-location-dot' />
+              <FontAwesomeIcon icon={faLocationDot} />
             </span>
             Manage addresses
           </a>
@@ -39,7 +46,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <FontAwesomeIcon icon='fa-solid fa-box-archive' />
+              <FontAwesomeIcon icon={faBoxArchive} />
             </span>
             My order history
           </Link>
@@ -51,7 +58,7 @@ function Sidebar({ user }) {
             className='relative text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <FontAwesomeIcon icon='fa-regular fa-heart' />
+              <FontAwesomeIcon icon={faHeart} />
             </span>
             My wishlist
           </a>
@@ -63,7 +70,7 @@ function Sidebar({ user }) {
             className='relative hover:text-primary block font-medium capitalize transition'
           >
             <span className='absolute -left-8 top-0 text-base'>
-              <FontAwesomeIcon icon='fa-solid fa-right-from-bracket' />
+              <FontAwesomeIcon icon={faRightFromBracket} />
             </span>
             Logout
           </button>

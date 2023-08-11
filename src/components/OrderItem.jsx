@@ -3,6 +3,7 @@ import { useState } from 'react'
 import api from '../api'
 import Loading from '../components/Loading'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const OrderItem = ({
   product,
@@ -103,7 +104,7 @@ const OrderItem = ({
             deleteFromOrder(product.product._id)
           }}
         >
-          <FontAwesomeIcon icon='fa fa-solid fa-xmark' />
+          <FontAwesomeIcon icon={faXmark} />
         </div>
       </div>
     </div>

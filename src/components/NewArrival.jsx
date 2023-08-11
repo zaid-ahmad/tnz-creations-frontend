@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import api from '../api'
 import SelectColorModal from './SelectColorModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass, faHeart } from '@fortawesome/free-solid-svg-icons'
 
 function NewArrival({
   user,
@@ -134,14 +135,14 @@ function NewArrival({
                         className='text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition'
                         title='view product'
                       >
-                        <FontAwesomeIcon icon=' fa-solid fa-magnifying-glass' />
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                       </a>
                       <button
                         onClick={() => addToWishlist(prod._id)}
                         className='text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition'
                         title='add to wishlist'
                       >
-                        <FontAwesomeIcon icon=' fa-solid fa-heart' />
+                        <FontAwesomeIcon icon={faHeart} />
                       </button>
                     </div>
                   </div>
