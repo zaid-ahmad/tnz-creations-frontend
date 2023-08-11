@@ -22,7 +22,6 @@ function Products({
   const [showModal, setShowModal] = useState(false)
   const [productColors, setProductColors] = useState([])
   const [id, setId] = useState('')
-  const [imagesLoaded, setImagesLoaded] = useState(false)
 
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
@@ -33,9 +32,6 @@ function Products({
         setProducts([...response_data])
       }
     })
-  }
-  const handleImageLoad = () => {
-    setImagesLoaded(true)
   }
 
   const addToWishlist = (id) => {
@@ -81,7 +77,6 @@ function Products({
 
   return (
     <>
-      {!imagesLoaded && <Loading />}
       <div className='w-full'>
         <div className='flex items-center mb-4 justify-between'>
           <select
@@ -194,7 +189,6 @@ function Products({
                           alt='product image'
                           className='aspect-square'
                           loading='lazy'
-                          onLoad={handleImageLoad}
                         />
                         <div className='absolute inset-0 bg-black bg-opacity-20 transition opacity-0 group-hover:opacity-100'></div>
                       </div>
