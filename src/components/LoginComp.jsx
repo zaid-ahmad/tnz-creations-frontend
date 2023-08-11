@@ -25,8 +25,9 @@ function LoginComp() {
         })
         .then((response) => {
           if (response.status === 200) {
-            navigateTo('/')
-            window.location.reload()
+            // navigateTo('/')
+            // window.location.reload()
+            console.log('logged in')
           }
         })
         .catch((err) => {
