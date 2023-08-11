@@ -20,7 +20,9 @@ function LoginComp() {
       }
 
       api
-        .post('/api/login', data)
+        .post('/api/login', data, {
+          withCredentials: true,
+        })
         .then((response) => {
           if (response.status === 200) {
             navigateTo('/')

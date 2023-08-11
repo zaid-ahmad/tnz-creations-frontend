@@ -55,7 +55,9 @@ function EmailVerificationComp() {
       OTP,
     }
     api
-      .post(`/api/verify-otp`, data)
+      .post('/api/verify-otp', data, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.status === 200) {
           navigateTo(`/`)
