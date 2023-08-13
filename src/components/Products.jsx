@@ -205,7 +205,13 @@ function Products({
                               (product.discount / 100) * product.price}
                           </p>
                           <p className='text-sm text-gray-400 line-through'>
-                            ₹{product.price}
+                            ₹
+                            {Math.ceil(
+                              Number(
+                                product.price -
+                                  (product.discount / 100) * product.price
+                              )
+                            )}
                           </p>
                           <p className='text-sm font-semibold text-orange-500'>
                             &#40;{product.discount}% OFF&#41;
