@@ -5,7 +5,7 @@ import customer from '../assets/images/icons/service-hours.svg'
 function Features() {
   return (
     <>
-      <div className='container py-16'>
+      <div className='container py-7'>
         <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center'>
           <div className='border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5'>
             <img
@@ -26,7 +26,7 @@ function Features() {
             />
             <div>
               <h4 className='font-medium capitalize text-lg'>Money Returns</h4>
-              <p className='text-gray-500 text-sm'>30 days money returs</p>
+              <p className='text-gray-500 text-sm'>30 days money return</p>
             </div>
           </div>
           <div className='border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5'>
