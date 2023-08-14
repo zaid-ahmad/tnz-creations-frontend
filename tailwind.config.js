@@ -27,6 +27,9 @@ export default {
         100: 'repeat(2, minmax(0, 25rem))',
         200: 'repeat(2, minmax(0, 20rem))',
       },
+      gridTemplateRows: {
+        300: 'repeat(2, minmax(0, 80rem))',
+      },
       aspectRatio: {
         '4/5': '4 / 5',
       },

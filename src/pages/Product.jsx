@@ -98,26 +98,24 @@ function Product({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <div className='flex flex-col'>
-        <div className='flex flex-col gap-52 md:gap-0 lg:gap-20'>
-          <div className='container'>
-            <ProductDetail
-              product={product}
-              user={user}
-              source={source}
-              deleteFromWishlist={delete_from_wishlist}
-              wishlistCount={wishlistCount}
-              setWishlistCount={setWishlistCount}
-              cartCount={cartCount}
-              setCartCount={setCartCount}
-            />
-          </div>
-          <div className='container mb-7'>
-            <Description product={product} />
-            <NewArrival />
-          </div>
+      <div className='grid grid-rows-200 md:gap-0 lg:gap-20'>
+        <div className='container lg:w-4/5'>
+          <ProductDetail
+            product={product}
+            user={user}
+            source={source}
+            deleteFromWishlist={delete_from_wishlist}
+            wishlistCount={wishlistCount}
+            setWishlistCount={setWishlistCount}
+            cartCount={cartCount}
+            setCartCount={setCartCount}
+          />
+        </div>
+        <div className='container'>
+          <Description product={product} />
         </div>
       </div>
+      <NewArrival />
       <Footer />
     </>
   )

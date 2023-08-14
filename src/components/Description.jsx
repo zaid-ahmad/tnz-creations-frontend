@@ -2,17 +2,17 @@
 function Description({ product }) {
   return (
     <>
-      <div className='container pb-7 mt-24'>
+      <div className='container'>
         <h3 className=' font-roboto text-gray-800 pb-3 font-medium'>
           Product details
         </h3>
-        <div className='w-3/5 pt-6'>
+        <div className='w-3/5'>
           <div className='text-gray-600'>{product.description}</div>
 
           <table className='table-auto border-collapse w-full text-left text-gray-600 text-sm mt-6'>
             <tr>
               <th className='py-2 px-4 border border-gray-300 w-40 font-medium'>
-                Color
+                Colors
               </th>
               {product.colors && (
                 <th className='py-2 px-4 border border-gray-300 '>
@@ -26,7 +26,7 @@ function Description({ product }) {
               </th>
               {product.dimensions && (
                 <th className='py-2 px-4 border border-gray-300 '>
-                  {product.dimensions.join(' × ')} cm
+                  {product.dimensions.join('cm × ')}cm
                 </th>
               )}
             </tr>

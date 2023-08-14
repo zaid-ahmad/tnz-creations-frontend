@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import api from '../api'
 import { useNavigate, Link } from 'react-router-dom'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import SelectColorModal from './SelectColorModal'
 import Loading from './Loading'
@@ -22,6 +22,18 @@ function Products({
   const [showModal, setShowModal] = useState(false)
   const [productColors, setProductColors] = useState([])
   const [id, setId] = useState('')
+  const [loading, setLoading] = useState(true)
+  const [loadedImageCount, setLoadedImageCount] = useState(0)
+
+  const handleLoad = () => {
+    setLoadedImageCount((prevCount) => prevCount + 1) // Increment the loaded image count
+  }
+
+  useEffect(() => {
+    if (loadedImageCount > 2) {
+      setLoading(false)
+    }
+  }, [loadedImageCount])
 
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
@@ -158,7 +170,7 @@ function Products({
             </>
           )}
         </div>
-
+        {loading && <Loading />}
         <div className='flex flex-col gap-6 md:grid md:grid-cols-3'>
           {products && products.length > 0 ? (
             products.map((product, index) => {
@@ -189,6 +201,7 @@ function Products({
                           alt='product image'
                           className='aspect-square'
                           loading='lazy'
+                          onLoad={handleLoad}
                         />
                         <div className='absolute inset-0 bg-black bg-opacity-20 transition opacity-0 group-hover:opacity-100'></div>
                       </div>
@@ -201,17 +214,15 @@ function Products({
                         <div className='flex items-baseline mb-1 space-x-2'>
                           <p className='text-xl text-primary font-semibold'>
                             ₹
-                            {product.price -
-                              (product.discount / 100) * product.price}
-                          </p>
-                          <p className='text-sm text-gray-400 line-through'>
-                            ₹
                             {Math.ceil(
                               Number(
                                 product.price -
                                   (product.discount / 100) * product.price
                               )
                             )}
+                          </p>
+                          <p className='text-sm text-gray-400 line-through'>
+                            MRP ₹{product.price}
                           </p>
                           <p className='text-sm font-semibold text-orange-500'>
                             &#40;{product.discount}% OFF&#41;
