@@ -114,7 +114,7 @@ function ProductDetail({
         <p className='text-gray-600 font-medium'>{product.name}</p>
       </div>
 
-      <div className='container flex flex-col md:grid md:grid-cols-2 gap-6 h-screen'>
+      <div className='container flex flex-col md:grid md:grid-cols-2 gap-6 '>
         <div>
           <img
             src={bigImage}
@@ -158,66 +158,73 @@ function ProductDetail({
             )}
           </div>
           <div className='flex items-baseline mb-1 space-x-2 font-roboto mt-4'>
-            <p className='text-xl text-primary font-semibold'>
+            <p className='text-2xl text-primary font-semibold'>
               ₹
               {Math.ceil(
                 Number(product.price - (product.discount / 100) * product.price)
               )}
             </p>
-            <p className='text-base text-gray-400 line-through'>
-              ₹{product.price}
-            </p>
+            <p className=' text-gray-400 line-through'>MRP ₹{product.price}</p>
           </div>
 
-          <p className='mt-4 text-gray-600'>{product.description}</p>
-
-          <div className='pt-4'>
-            <h3 className='text-xl text-gray-800 mb-3 uppercase font-medium'>
-              Color
-            </h3>
-            <div className='flex items-center gap-2'>
-              <div className='flex gap-2 color-selector'>
-                {product.colors &&
-                  product.colors.map((color) => (
-                    <React.Fragment key={color.toLowerCase()}>
-                      <input
-                        type='radio'
-                        name='color'
-                        id={color.toLowerCase()}
-                        value={color}
-                        onChange={(e) => {
-                          setColor(e.target.value)
-                        }}
-                        className='hidden'
-                      />
-                      <label
-                        htmlFor={color.toLowerCase()}
-                        className='border border-gray-200 rounded-sm h-6 w-6 cursor-pointer shadow-sm block'
-                        style={{ backgroundColor: `${color.toLowerCase()}` }}
-                      ></label>
-                    </React.Fragment>
-                  ))}
+          <p className='mt-4 text-gray-800 font-semibold hidden md:block'>
+            <span>Description: </span>
+            {product.description && (
+              <>
+                <p className='font-light text-gray-600'>
+                  {product.description.length > 310
+                    ? product.description + '...'
+                    : product.description}
+                </p>
+              </>
+            )}
+          </p>
+          <div className='flex flex-col'>
+            <div className='pt-4'>
+              <span className='text-gray-800 font-semibold'>Color:</span>
+              <div className='flex items-center gap-2 mt-2'>
+                <div className='flex gap-2 color-selector'>
+                  {product.colors &&
+                    product.colors.map((color) => (
+                      <React.Fragment key={color.toLowerCase()}>
+                        <input
+                          type='radio'
+                          name='color'
+                          id={color.toLowerCase()}
+                          value={color}
+                          onChange={(e) => {
+                            setColor(e.target.value)
+                          }}
+                          className='hidden'
+                        />
+                        <label
+                          htmlFor={color.toLowerCase()}
+                          className='border border-gray-200 rounded h-6 w-6 cursor-pointer shadow-sm block'
+                          style={{ backgroundColor: `${color.toLowerCase()}` }}
+                        ></label>
+                      </React.Fragment>
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-
-          <div className='mt-4'>
-            <h3 className='text-sm text-gray-800 uppercase mb-1'>Quantity</h3>
-            <div className='flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max'>
-              <div
-                className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'
-                onClick={decreaseQty}
-              >
-                -
-              </div>
-              <div className='h-8 w-8 text-base flex items-center justify-center'>
-                {qty}
-              </div>
-              <div
-                className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'
-                onClick={increaseQty}
-              >
-                +
+            <div className='mt-4'>
+              <span className='text-gray-800 font-semibold'>Quantity:</span>
+              <div className='flex border border-gray-300 text-gray-600 divide-x divide-gray-300 w-max mt-2'>
+                <div
+                  className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'
+                  onClick={decreaseQty}
+                >
+                  -
+                </div>
+                <div className='h-8 w-8 text-base flex items-center justify-center'>
+                  {qty}
+                </div>
+                <div
+                  className='h-8 w-8 text-xl flex items-center justify-center cursor-pointer select-none'
+                  onClick={increaseQty}
+                >
+                  +
+                </div>
               </div>
             </div>
           </div>
