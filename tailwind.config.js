@@ -13,6 +13,10 @@ export default {
       padding: '1rem',
     },
     extend: {
+      listStyleType: {
+        roman: 'upper-roman',
+        alpha: 'lower-alpha',
+      },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
         roboto: ['Roboto', 'sans-serif'],

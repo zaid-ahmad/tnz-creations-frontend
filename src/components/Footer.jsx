@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 function Footer() {
   return (
     <>
@@ -22,26 +24,17 @@ function Footer() {
                     href='#'
                     className='text-gray-700 transition hover:opacity-75'
                   >
-                    Refund Policy
-                  </a>
-                </li>
-
-                <li>
-                  <a
-                    href='#'
-                    className='text-gray-700 transition hover:opacity-75'
-                  >
                     Privacy Policy
                   </a>
                 </li>
 
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to='/terms-of-service'
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -51,12 +44,12 @@ function Footer() {
 
               <ul className='mt-6 space-y-4 text-sm'>
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to={'/about'}
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     About
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
@@ -69,12 +62,12 @@ function Footer() {
                 </li>
 
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to='/terms-of-service'
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     Terms of Service
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -84,12 +77,12 @@ function Footer() {
 
               <ul className='mt-6 space-y-4 text-sm'>
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to={'/contact'}
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     Contact
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
