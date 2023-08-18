@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import api from '../api'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -70,18 +70,18 @@ function Navbar({ user }) {
                 >
                   Shop
                 </a>
-                <a
-                  href='#'
+                <Link
+                  to={'/about'}
                   className='text-gray-200 hover:text-white transition'
                 >
                   About us
-                </a>
-                <a
-                  href='#'
+                </Link>
+                <Link
+                  to={'/contact'}
                   className='text-gray-200 hover:text-white transition'
                 >
                   Contact us
-                </a>
+                </Link>
               </div>
             </div>
           </div>
@@ -129,18 +129,18 @@ function Navbar({ user }) {
                 >
                   Shop
                 </a>
-                <a
-                  href='#'
+                <Link
+                  to={'/about'}
                   className='text-gray-200 hover:text-white transition'
                 >
                   About us
-                </a>
-                <a
-                  href='#'
+                </Link>
+                <Link
+                  to={'/contact'}
                   className='text-gray-200 hover:text-white transition'
                 >
                   Contact us
-                </a>
+                </Link>
               </div>
             </div>
           </div>

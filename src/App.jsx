@@ -17,6 +17,9 @@ import api from './api'
 import Loading from './components/Loading'
 import Orders from './pages/Orders'
 import Search from './pages/Search'
+import TOS from './pages/TOS'
+import Contact from './pages/Contact'
+import About from './pages/About'
 
 const RouteSwitch = () => {
   const [user, setUser] = useState({})
@@ -213,6 +216,15 @@ const RouteSwitch = () => {
               searchResult={searchResult}
             />
           }
+        />
+        <Route path='/terms-of-service' element={<TOS />} />
+        <Route
+          path='/contact'
+          element={<Contact user={user} wishlist={wishlist} cart={cart} />}
+        />
+        <Route
+          path='/about'
+          element={<About user={user} wishlist={wishlist} cart={cart} />}
         />
       </Routes>
     </BrowserRouter>
