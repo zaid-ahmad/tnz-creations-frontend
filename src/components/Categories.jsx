@@ -39,6 +39,7 @@ function Categories() {
   const handleCategoryClick = (categoryId) => {
     // Navigate to the Shop page with the selected category as a query parameter
     navigate(`/shop?categories=${categoryId}`)
+    window.scrollTo(0, 0)
   }
 
   return (
