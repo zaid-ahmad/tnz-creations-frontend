@@ -150,6 +150,7 @@ function Shop({
           deleteFromWishlist={delete_from_wishlist}
           cartCount={cartCount}
           setCartCount={setCartCount}
+          selectedCategory={selectedCategory}
         />
       </div>
       <Footer />

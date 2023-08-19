@@ -16,6 +16,7 @@ function Products({
   setWishlistCount,
   setCartCount,
   cartCount,
+  selectedCategory,
 }) {
   const navigateTo = useNavigate()
   const [message, setMessage] = useState('')
@@ -30,10 +31,14 @@ function Products({
   }
 
   useEffect(() => {
-    if (loadedImageCount > 2) {
+    if (selectedCategory) {
       setLoading(false)
+    } else {
+      if (loadedImageCount > 2) {
+        setLoading(false)
+      }
     }
-  }, [loadedImageCount])
+  }, [loadedImageCount, selectedCategory])
 
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
