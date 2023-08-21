@@ -438,9 +438,9 @@ function TOSComp() {
                 <p>
                   These Terms and the Privacy Policy shall be governed by and
                   construed in accordance with the laws of India. The courts at
-                  Bangalore, Karnataka shall have the exclusive jurisdiction to
-                  hear and decide any disputes arising out of or in connection
-                  with these Terms and/ or Privacy Policy.
+                  Delhi, India shall have the exclusive jurisdiction to hear and
+                  decide any disputes arising out of or in connection with these
+                  Terms and/ or Privacy Policy.
                 </p>
               </div>
               <div>
