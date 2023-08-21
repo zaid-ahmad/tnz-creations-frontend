@@ -98,7 +98,8 @@ function ContactComp() {
                   Phone
                 </h2>
                 <p className='mt-2 text-sm text-gray-500'>
-                  Mon-Fri from 8am to 5pm.
+                  Mon-Sat from 10am to 6pm (closed on all Sundays and National
+                  Holidays)
                 </p>
                 <p className='mt-2 text-sm text-primary'>+91 99110 83755</p>
               </div>
