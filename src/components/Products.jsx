@@ -2,6 +2,7 @@
 import api from '../api'
 import { useNavigate, Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import PlaceholderLoading from 'react-placeholder-loading'
 
 import SelectColorModal from './SelectColorModal'
 import Loading from './Loading'
@@ -34,6 +35,7 @@ function Products({
     if (selectedCategory) {
       setLoading(false)
     } else {
+      console.log(loadedImageCount)
       if (loadedImageCount > 2) {
         setLoading(false)
       }
@@ -175,7 +177,6 @@ function Products({
             </>
           )}
         </div>
-        {loading && <Loading />}
         <div className='flex flex-col gap-6 md:grid md:grid-cols-3'>
           {products && products.length > 0 ? (
             products.map((product, index) => {
@@ -201,13 +202,23 @@ function Products({
                       className='hover:bg-opacity-80'
                     >
                       <div className='relative flex justify-center'>
-                        <img
-                          src={source[index]}
-                          alt='product image'
-                          className='aspect-square'
-                          loading='lazy'
-                          onLoad={handleLoad}
-                        />
+                        {/* placeholder here */}
+                        {loading ? (
+                          <PlaceholderLoading
+                            shape='rect'
+                            width={60}
+                            height={60}
+                          />
+                        ) : (
+                          <img
+                            src={source[index]}
+                            alt='product image'
+                            className='aspect-square'
+                            loading='lazy'
+                            onLoad={handleLoad}
+                          />
+                        )}
+
                         <div className='absolute inset-0 bg-black bg-opacity-20 transition opacity-0 group-hover:opacity-100'></div>
                       </div>
                       <div className='pt-4 pb-3 px-4'>

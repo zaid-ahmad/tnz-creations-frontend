@@ -24,6 +24,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.9.0",
     "react-phone-number-input": "^3.3.0",
+    "react-placeholder-loading": "^0.5.30",
     "react-router-dom": "^6.11.2",
     "react-use-window-size": "^1.0.1"
   },
