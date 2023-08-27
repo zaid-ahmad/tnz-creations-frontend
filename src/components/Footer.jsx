@@ -53,12 +53,12 @@ function Footer() {
                 </li>
 
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to='/shipping-policy'
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     Shipping Policy
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
@@ -86,12 +86,12 @@ function Footer() {
                 </li>
 
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to='/faq'
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     FAQs
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
