@@ -1,11 +1,10 @@
 /* eslint-disable react/prop-types */
 import api from '../api'
 import { useNavigate, Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import PlaceholderLoading from 'react-placeholder-loading'
 
 import SelectColorModal from './SelectColorModal'
-import Loading from './Loading'
 
 function Products({
   setProducts,
@@ -24,23 +23,12 @@ function Products({
   const [showModal, setShowModal] = useState(false)
   const [productColors, setProductColors] = useState([])
   const [id, setId] = useState('')
-  const [loading, setLoading] = useState(true)
-  const [loadedImageCount, setLoadedImageCount] = useState(0)
+  const [loaded, setLoaded] = useState(false)
 
   const handleLoad = () => {
-    setLoadedImageCount((prevCount) => prevCount + 1) // Increment the loaded image count
+    console.log('Image loaded')
+    setLoaded(true) // Increment the loaded image count
   }
-
-  useEffect(() => {
-    if (selectedCategory) {
-      setLoading(false)
-    } else {
-      console.log(loadedImageCount)
-      if (loadedImageCount > 2) {
-        setLoading(false)
-      }
-    }
-  }, [loadedImageCount, selectedCategory])
 
   const handleSortChange = (event) => {
     const selectedValue = event.target.value
@@ -181,7 +169,7 @@ function Products({
           {products && products.length > 0 ? (
             products.map((product, index) => {
               return (
-                <>
+                <React.Fragment key={product._id}>
                   {showModal && (
                     <>
                       <SelectColorModal
@@ -202,31 +190,31 @@ function Products({
                       className='hover:bg-opacity-80'
                     >
                       <div className='relative flex justify-center'>
-                        {/* placeholder here */}
-                        {loading ? (
-                          <PlaceholderLoading
-                            shape='rect'
-                            width={60}
-                            height={60}
-                          />
-                        ) : (
+                        <PlaceholderLoading
+                          shape='rect'
+                          width={355}
+                          height={355}
+                        />
+                        <img
+                          src={source[index]}
+                          className={!loaded ? 'hidden' : ''}
+                          loading='lazy'
+                          onLoad={handleLoad}
+                        />
+                        {!loaded && (
                           <img
                             src={source[index]}
-                            alt='product image'
-                            className='aspect-square'
+                            className={'aspect-square'}
                             loading='lazy'
                             onLoad={handleLoad}
                           />
                         )}
-
                         <div className='absolute inset-0 bg-black bg-opacity-20 transition opacity-0 group-hover:opacity-100'></div>
                       </div>
                       <div className='pt-4 pb-3 px-4'>
-                        <a href='#'>
-                          <h4 className='uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition'>
-                            {product.name}
-                          </h4>
-                        </a>
+                        <h4 className='uppercase font-medium text-xl mb-2 text-gray-800'>
+                          {product.name}
+                        </h4>
                         <div className='flex items-baseline mb-1 space-x-2'>
                           <p className='text-xl text-primary font-semibold'>
                             ₹
@@ -246,28 +234,28 @@ function Products({
                         </div>
                       </div>
                     </Link>
-                    <div className='flex px-3 pb-5 gap-3'>
+                    <div className='flex px-3 pb-5 gap-3 items-end'>
                       <button
                         onClick={() => addToBag(product._id)}
-                        className='mt-auto block w-full py-1 text-md text-center text-white bg-primary border border-primary rounded hover:bg-primaryDark hover:text-white transition'
+                        className='w-full h-11 text-md text-center text-white bg-primary border border-primary rounded hover:bg-primaryDark hover:text-white transition'
                         title='Add to Cart'
                       >
                         Add to cart
                       </button>
                       <button
                         onClick={() => addToWishlist(product._id)}
-                        className='block rounded justify-center text-md gap-2 w-full py-1 text-primary border-2 border-primary hover:bg-slate-100 transition'
+                        className='w-full h-11 text-md gap-2 rounded justify-center text-primary border-2 border-primary hover:bg-slate-100 transition'
                         title='Add to Wishlist'
                       >
                         Wishlist
                       </button>
                     </div>
                   </div>
-                </>
+                </React.Fragment>
               )
             })
           ) : (
-            <h2 className='text-3xl mt-8 w-[500px] font-bold'>
+            <h2 className='text-md text-zinc-600 mt-5 w-full font-medium ml-5'>
               No product found
             </h2>
           )}

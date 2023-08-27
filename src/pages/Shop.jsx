@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { useLocation, Link } from 'react-router-dom'
 
 import Header from '../components/Header'
@@ -63,31 +63,30 @@ function Shop({
     fetchProducts()
   }, [selectedCategory])
 
-  useEffect(() => {
-    // Fetch images for each product and update the state
-    const fetchImages = async () => {
-      const imageSources = await Promise.all(
-        products.map((product) =>
-          api
-            .get(`/images/uploads/${product.images[0]}`, {
-              responseType: 'arraybuffer',
-            })
-            .then((response) => {
-              const base64 = btoa(
-                new Uint8Array(response.data).reduce(
-                  (data, byte) => data + String.fromCharCode(byte),
-                  ''
-                )
-              )
-              return 'data:;base64,' + base64
-            })
-        )
-      )
-      setSource(imageSources)
-    }
+  const memoizedImageSources = useMemo(() => {
+    return Promise.all(
+      products.map(async (product) => {
+        const response = await api.get(`/images/uploads/${product.images[0]}`, {
+          responseType: 'arraybuffer',
+        })
 
-    fetchImages()
+        const base64 = btoa(
+          new Uint8Array(response.data).reduce(
+            (data, byte) => data + String.fromCharCode(byte),
+            ''
+          )
+        )
+
+        return 'data:;base64,' + base64
+      })
+    )
   }, [products])
+
+  useEffect(() => {
+    memoizedImageSources.then((imageSources) => {
+      setSource(imageSources)
+    })
+  }, [memoizedImageSources])
 
   useEffect(() => {
     setWishlistCount(wishlist.length)
