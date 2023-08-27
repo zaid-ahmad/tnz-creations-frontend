@@ -77,7 +77,7 @@ function FAQsComp() {
                   For any general queries regarding our products pricing or
                   website, feel free to call us or send a Whatsapp message at
                   9911083755. To report damages, quality issues or request a
-                  return or exchange please email us at{' '}
+                  return please email us at{' '}
                   <a
                     href='mailto:tnzcreations1@gmail.com'
                     className='underline'
