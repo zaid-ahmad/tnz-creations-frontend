@@ -103,10 +103,15 @@ const SearchResults = ({
                   <div className='flex items-baseline mb-1 space-x-2'>
                     <p className='text-xl text-primary font-semibold'>
                       ₹
-                      {product.price - (product.discount / 100) * product.price}
+                      {Math.ceil(
+                        Number(
+                          product.price -
+                            (product.discount / 100) * product.price
+                        )
+                      )}
                     </p>
                     <p className='text-sm text-gray-400 line-through'>
-                      ₹{product.price}
+                      MRP ₹{product.price}
                     </p>
                     <p className='text-sm font-semibold text-orange-500'>
                       &#40;{product.discount}% OFF&#41;
