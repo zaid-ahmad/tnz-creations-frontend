@@ -17,6 +17,10 @@ function Contact({ user, wishlist, cart }) {
     setCartCount(cart.length)
   }, [cart])
 
+  useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
   return (
     <>
       <Header user={user} wishlistCount={wishlistCount} cartCount={cartCount} />

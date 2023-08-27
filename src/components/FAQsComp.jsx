@@ -85,7 +85,7 @@ function FAQsComp() {
                     tnzcreations1@gmail.com
                   </a>
                   <span> </span>. We are available from Monday to Saturday from
-                  9am to 6pm.
+                  10am to 6pm (closed on all Sundays and National Holidays)
                 </p>
               </div>
             </details>

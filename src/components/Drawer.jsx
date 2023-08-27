@@ -85,6 +85,7 @@ function Drawer({ setProducts }) {
             </h3>
             <div className='space-y-2'>
               {categories.map((category) => {
+                const inputId = `cat-${category._id}`
                 return (
                   <React.Fragment key={category._id}>
                     <div className='flex items-center'>
@@ -93,18 +94,19 @@ function Drawer({ setProducts }) {
                           (checkboxesRef.current[category.name] = ref)
                         }
                         type='checkbox'
-                        name='cat-1'
-                        id='cat-1'
+                        name={inputId}
+                        id={inputId}
                         value={category.name}
                         checked={selectedCat.includes(category.name)}
                         onChange={(e) => handleChecked(e)}
                         className='text-primary focus:ring-0 rounded-sm cursor-pointer'
                       />
                       <label
-                        htmlFor={category.name}
-                        className='text-gray-600 ml-3 cusror-pointer'
-                      />
-                      {category.name}
+                        htmlFor={inputId}
+                        className='text-gray-600 ml-3 cursor-pointer'
+                      >
+                        {category.name}
+                      </label>
                     </div>
                   </React.Fragment>
                 )

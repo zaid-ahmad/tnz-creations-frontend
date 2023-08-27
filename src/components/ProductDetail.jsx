@@ -27,6 +27,7 @@ function ProductDetail({
   const [color, setColor] = useState('')
   const [message, setMessage] = useState('')
   const [bigImage, setBigImage] = useState(source[0])
+
   const navigateTo = useNavigate()
 
   const increaseQty = () => {

@@ -27,6 +27,7 @@ function Product({
   const { id } = useParams()
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     api.get(`/api/products/${id}`).then((res) => {
       const res_data = res.data
 

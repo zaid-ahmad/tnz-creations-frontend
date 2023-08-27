@@ -21,6 +21,10 @@ function Account({
   const navigateTo = useNavigate()
 
   useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
+  useEffect(() => {
     setWishlistCount(wishlist.length)
   }, [wishlist])
 
