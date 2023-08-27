@@ -20,6 +20,7 @@ import Search from './pages/Search'
 import TOS from './pages/TOS'
 import Contact from './pages/Contact'
 import About from './pages/About'
+import PrivacyPolicy from './pages/PrivacyPolicy'
 
 const RouteSwitch = () => {
   const [user, setUser] = useState({})
@@ -218,6 +219,7 @@ const RouteSwitch = () => {
           }
         />
         <Route path='/terms-of-service' element={<TOS />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route
           path='/contact'
           element={<Contact user={user} wishlist={wishlist} cart={cart} />}

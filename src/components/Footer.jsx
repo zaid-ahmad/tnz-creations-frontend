@@ -20,12 +20,12 @@ function Footer() {
                 </li>
 
                 <li>
-                  <a
-                    href='#'
+                  <Link
+                    to='/privacy-policy'
                     className='text-gray-700 transition hover:opacity-75'
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
 
                 <li>
