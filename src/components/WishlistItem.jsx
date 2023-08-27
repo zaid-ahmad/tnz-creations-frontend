@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useNavigate } from 'react-router-dom'
 import api from '../api'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import SelectColorModal from './SelectColorModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -20,6 +20,10 @@ const WishlistItem = ({
   const [showModal, setShowModal] = useState(false)
   const [productColors, setProductColors] = useState([])
   const [id, setId] = useState('')
+
+  useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
 
   const addToCart = (id) => {
     if (user.expired) {

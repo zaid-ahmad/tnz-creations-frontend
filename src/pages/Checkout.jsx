@@ -48,6 +48,10 @@ function Checkout({
     setCartCount(cart.length)
   }, [cart])
 
+  useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
   return (
     <>
       <Header

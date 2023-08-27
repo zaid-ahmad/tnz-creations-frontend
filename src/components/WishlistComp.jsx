@@ -15,6 +15,7 @@ function WishlistComp({
   const [source, setSource] = useState([])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     api
       .get(`/api/wishlist-products?email=${user.email}`)
       .then((response) => {

@@ -32,6 +32,10 @@ function Shop({
   const selectedCategory = searchParams.get('categories')
 
   useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
+  useEffect(() => {
     // Fetch products based on the selected category
     const fetchProducts = async () => {
       if (selectedCategory) {

@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom'
 import Logo from '../assets/Logo.svg'
+import { useEffect } from 'react'
 
 function TOSComp() {
+  useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
   return (
     <>
       <header className='py-4 shadow-sm bg-white'>

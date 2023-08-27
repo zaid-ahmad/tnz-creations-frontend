@@ -13,6 +13,10 @@ function Wishlist({ user, wishlist, cart }) {
   const [cartCount, setCartCount] = useState(cart.length)
 
   useEffect(() => {
+    window.scrollTo(0, 0) // Scroll to the top when route changes
+  }, [])
+
+  useEffect(() => {
     setWishlistCount(wishlist.length)
   }, [wishlist])
 
