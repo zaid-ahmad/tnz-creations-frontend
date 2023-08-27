@@ -173,7 +173,7 @@ function ProductDetail({
               <>
                 <p className='font-light text-gray-600'>
                   {product.description.length > 310
-                    ? product.description + '...'
+                    ? product.description.slice(0, 310) + '...'
                     : product.description}
                 </p>
               </>
