@@ -26,8 +26,7 @@ function Products({
   const [loaded, setLoaded] = useState(false)
 
   const handleLoad = () => {
-    console.log('Image loaded')
-    setLoaded(true) // Increment the loaded image count
+    setLoaded(true)
   }
 
   const handleSortChange = (event) => {

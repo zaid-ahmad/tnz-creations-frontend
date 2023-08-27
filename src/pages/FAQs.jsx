@@ -12,3 +12,5 @@ function FAQs() {
 }
 
 export default FAQs
+
+// Fix Link redirecting to the same area
