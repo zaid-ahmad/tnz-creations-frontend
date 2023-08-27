@@ -173,7 +173,7 @@ function ProductDetail({
               <>
                 <p className='font-light text-gray-600'>
                   {product.description.length > 310
-                    ? product.description + '...'
+                    ? product.description.slice(0, 310) + '...'
                     : product.description}
                 </p>
               </>
@@ -230,19 +230,25 @@ function ProductDetail({
           </div>
           <p className='text-red-600 pt-6'>{message}</p>
 
-          <div className='mt-2 flex gap-3 border-b border-gray-200 pb-5 pt-5'>
-            <button
-              onClick={() => addToCart(product._id)}
-              className='bg-primary border border-primary text-white px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition'
-            >
-              <FontAwesomeIcon icon={faBagShopping} /> Add to cart
-            </button>
-            <button
-              onClick={() => addToWishlist(product._id)}
-              className='border border-gray-300 text-gray-600 px-8 py-2 font-medium rounded uppercase flex items-center gap-2 hover:text-primary transition'
-            >
-              <FontAwesomeIcon icon={faHeart} /> Wishlist
-            </button>
+          <div className='mt-2 flex md:flex-row flex-col items-center gap-3 border-b border-gray-200 pb-5 pt-5'>
+            <div className='flex items-center justify-center gap-3 w-full h-14 bg-primary border border-primary px-8 py-2 rounded text-white hover:text-primary transition hover:bg-transparent'>
+              <FontAwesomeIcon icon={faBagShopping} />
+              <button
+                onClick={() => addToCart(product._id)}
+                className='font-medium uppercase'
+              >
+                Add to cart
+              </button>
+            </div>
+            <div className='flex items-center justify-center gap-3 w-full h-14 border border-gray-300 text-gray-600 px-8 py-2 rounded  hover:text-primary transition'>
+              <FontAwesomeIcon icon={faHeart} />
+              <button
+                onClick={() => addToWishlist(product._id)}
+                className='font-medium uppercase'
+              >
+                Wishlist
+              </button>
+            </div>
           </div>
         </div>
       </div>

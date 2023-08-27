@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import api from '../api'
-import { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useLocation } from 'react-router-dom'
 
 function Drawer({ setProducts }) {
@@ -86,7 +86,7 @@ function Drawer({ setProducts }) {
             <div className='space-y-2'>
               {categories.map((category) => {
                 return (
-                  <>
+                  <React.Fragment key={category._id}>
                     <div className='flex items-center'>
                       <input
                         ref={(ref) =>
@@ -106,7 +106,7 @@ function Drawer({ setProducts }) {
                       />
                       {category.name}
                     </div>
-                  </>
+                  </React.Fragment>
                 )
               })}
             </div>
