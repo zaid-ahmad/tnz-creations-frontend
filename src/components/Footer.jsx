@@ -149,7 +149,7 @@ function Footer() {
 
               <li>
                 <a
-                  href='https://www.linkedin.com/in/tnz-creations-378925226/?originalSubdomain=in&original_referer='
+                  href='https://www.linkedin.com/company/tnz-creations/'
                   rel='noreferrer'
                   target='_blank'
                   className='text-gray-700 transition hover:opacity-75'
