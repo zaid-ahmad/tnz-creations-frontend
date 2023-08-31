@@ -61,6 +61,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
               </div>
             </div>
 
+            {/* Search Bar */}
             <div className='hidden w-full max-w-xl relative md:flex md:w-3/6'>
               <span className='absolute left-4 top-3 text-lg text-gray-400'>
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
