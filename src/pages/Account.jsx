@@ -50,8 +50,8 @@ function Account({
         setSearchQuery={setSearchQuery}
       />
       <Navbar user={user} />
-      <div className='container flex flex-col mt-7 items-start md:flex-row md:gap-5'>
-        <div className='w-72  '>
+      <div className='container flex flex-col mt-7 items-start md:flex-row md:gap-5 md:px-24'>
+        <div className='w-72'>
           <Sidebar user={user} />
         </div>
         <div className='w-full p-5'>
