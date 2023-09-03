@@ -232,23 +232,19 @@ function ProductDetail({
           <p className='text-red-600 pt-6'>{message}</p>
 
           <div className='mt-2 flex md:flex-row flex-col items-center gap-3 border-b border-gray-200 pb-5 pt-5'>
-            <div className='flex items-center justify-center gap-3 w-full h-14 bg-primary border border-primary px-8 py-2 rounded text-white hover:text-primary transition hover:bg-transparent'>
+            <div
+              className='flex items-center justify-center gap-3 w-full h-14 bg-primary border border-primary px-8 py-2 rounded text-white hover:text-primary transition hover:bg-transparent cursor-pointer'
+              onClick={() => addToCart(product._id)}
+            >
               <FontAwesomeIcon icon={faBagShopping} />
-              <button
-                onClick={() => addToCart(product._id)}
-                className='font-medium uppercase'
-              >
-                Add to cart
-              </button>
+              <p className='font-medium uppercase'>Add to cart</p>
             </div>
-            <div className='flex items-center justify-center gap-3 w-full h-14 border border-gray-300 text-gray-600 px-8 py-2 rounded  hover:text-primary transition'>
+            <div
+              className='flex items-center justify-center gap-3 w-full h-14 border border-gray-300 text-gray-600 px-8 py-2 rounded  hover:text-primary transition cursor-pointer'
+              onClick={() => addToWishlist(product._id)}
+            >
               <FontAwesomeIcon icon={faHeart} />
-              <button
-                onClick={() => addToWishlist(product._id)}
-                className='font-medium uppercase'
-              >
-                Wishlist
-              </button>
+              <p className='font-medium uppercase'>Wishlist</p>
             </div>
           </div>
         </div>

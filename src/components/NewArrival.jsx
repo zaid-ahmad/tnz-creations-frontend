@@ -95,7 +95,7 @@ function NewArrival({
 
   return (
     <>
-      <div className='container pb-16 mt-14'>
+      <div className='container pb-16 md:p-24 md:mt-0 mt-14'>
         <h2 className='text-2xl font-medium text-gray-800 uppercase mb-6'>
           top new arrival
         </h2>

@@ -44,7 +44,7 @@ function Header({ user, wishlistCount, cartCount, setSearchResult }) {
     return (
       <>
         <header className='py-4 shadow-sm bg-white'>
-          <div className='container flex flex-col items-center justify-between md:flex-row'>
+          <div className='container flex flex-col items-center justify-between md:flex-row md:justify-around'>
             <div className='flex items-center gap-5'>
               <div>
                 <Link to={'/'}>

@@ -8,3 +8,4 @@ const api = axios.create({
 export default api
 
 // https://tnzcreationsinventory.up.railway.app/
+// http://localhost:3000/

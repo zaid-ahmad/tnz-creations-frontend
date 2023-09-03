@@ -65,8 +65,12 @@ const OrderItem = ({
             <div className='flex items-center gap-2'>
               <div className='text-primary text-lg font-semibold'>
                 ₹
-                {product.product.price -
-                  (product.product.discount / 100) * product.product.price}
+                {Math.ceil(
+                  Number(
+                    product.product.price -
+                      (product.product.discount / 100) * product.product.price
+                  )
+                )}
               </div>
               <p className='text-sm text-gray-400 line-through'>
                 ₹{product.product.price}

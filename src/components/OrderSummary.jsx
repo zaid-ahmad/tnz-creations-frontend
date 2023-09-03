@@ -19,7 +19,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
       name: 'TNZ Creations',
       description: 'stuff',
       image:
-        'https://images.all-free-download.com/images/graphiclarge/cat_cat_face_cats_eyes_240527.jpg',
+        'https://media.licdn.com/dms/image/D4D0BAQF0YFSp2hlBtw/company-logo_200_200/0/1692339886676?e=1701907200&v=beta&t=Ul0GSwyA25VHm5VrvGbmIOboReOKB0ZAyrpZ5rlGt3E',
       order_id: data.id,
       callback_url: `http://localhost:3000/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
       prefill: {
@@ -28,7 +28,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
         contact: user.phone,
       },
       theme: {
-        color: '#bd2990',
+        color: '#000',
       },
     }
     const rzp1 = new window.Razorpay(options)
@@ -55,10 +55,11 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
   useEffect(() => {
     if (orderData && orderData.totalAmount) {
       if (
-        parseInt(orderData.totalAmount * 0.18 + orderData.totalAmount) > 499
+        parseInt(orderData.totalAmount * 0.18 + orderData.totalAmount) < 499
       ) {
-        setShippingCharges(60)
+        setShippingCharges(0)
       } else {
+        setShippingCharges(60)
         console.log(
           parseInt(orderData.totalAmount * 0.18 + orderData.totalAmount)
         )
@@ -69,7 +70,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
   if (orderData && orderData.products) {
     return (
       <>
-        <div className='w-96 border border-gray-200 p-4 rounded'>
+        <div className='md:w-96 w-full border border-gray-200 p-4 rounded'>
           <h4 className='text-gray-800 text-lg mb-4 font-medium uppercase'>
             order summary
           </h4>
@@ -84,10 +85,12 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
                     <p className='text-gray-600'>×{product.quantity}</p>
                     <p className='text-gray-800 font-medium'>
                       ₹
-                      {Number(
-                        product.product.price -
-                          (product.product.discount / 100) *
-                            product.product.price
+                      {Math.ceil(
+                        Number(
+                          product.product.price -
+                            (product.product.discount / 100) *
+                              product.product.price
+                        )
                       )}
                     </p>
                   </div>
@@ -98,8 +101,14 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
 
           <div className='flex justify-between border-b border-gray-200 mt-1 text-sm text-gray-500 font-medium py-3 uppercas'>
             <p>Subtotal</p>
-            {/* {order[0].totalAmount} */}
-            <p>₹{orderData.totalAmount}</p>
+            {/* ₹
+                            {Math.ceil(
+                              Number(
+                                product.price -
+                                  (product.discount / 100) * product.price
+                              )
+                            )} */}
+            <p>₹{Math.ceil(orderData.totalAmount)}</p>
           </div>
 
           <div className='flex justify-between border-b border-gray-200 mt-1 text-sm text-gray-500 font-medium py-3 uppercas'>

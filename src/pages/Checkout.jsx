@@ -102,12 +102,37 @@ function Checkout({
                 setAddressMessage={setAddressMessage}
               />
             </div>
-            <OrderSummary
-              user={user}
-              orderData={orderData}
-              selectedOption={selectedOption}
-              setAddressMessage={setAddressMessage}
-            />
+            <div className='flex flex-col gap-5'>
+              <div className='p-5 bg-red-100 border-2 border-red-500 rounded text-sm leading-6 text-zinc-800 w-full'>
+                <p>
+                  We apologize for any inconvenience, but we are currently
+                  experiencing technical difficulties and are unable to accept
+                  orders. We are working to resolve the issue as quickly as
+                  possible.
+                </p>
+
+                <br />
+
+                <p>
+                  In the meantime, please contact us at <span> </span>
+                  <a
+                    href='mailto:tnzcreations1@gmail.com'
+                    className='italic underline'
+                  >
+                    tnzcreations1@gmail.com
+                  </a>{' '}
+                  or <span> </span>
+                  <span className='italic underline'>9911083755</span> to place
+                  an order. We appreciate your patience and understanding.
+                </p>
+              </div>
+              <OrderSummary
+                user={user}
+                orderData={orderData}
+                selectedOption={selectedOption}
+                setAddressMessage={setAddressMessage}
+              />
+            </div>
           </div>
         </>
       )}

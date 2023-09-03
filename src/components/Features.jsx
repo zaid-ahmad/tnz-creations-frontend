@@ -6,8 +6,8 @@ function Features() {
   return (
     <>
       <div className='container py-7'>
-        <div className='w-full grid grid-cols-1 md:grid-cols-3 gap-6 mx-auto justify-center'>
-          <div className='border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5'>
+        <div className='w-full flex flex-col md:flex-row gap-6 mx-auto justify-center md:px-32'>
+          <div className='border border-primary rounded px-3 py-6 flex justify-center items-center gap-5 w-full'>
             <img
               src={shipping}
               alt='Delivery'
@@ -18,7 +18,7 @@ function Features() {
               <p className='text-gray-500 text-sm'>Order over ₹499</p>
             </div>
           </div>
-          <div className='border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5'>
+          <div className='border border-primary rounded px-3 py-6 flex justify-center items-center gap-5 w-full'>
             <img
               src={money}
               alt='Delivery'
@@ -29,7 +29,7 @@ function Features() {
               <p className='text-gray-500 text-sm'>30 days money return</p>
             </div>
           </div>
-          <div className='border border-primary rounded-sm px-3 py-6 flex justify-center items-center gap-5'>
+          <div className='border border-primary rounded px-3 py-6 flex justify-center items-center gap-5 w-full'>
             <img
               src={customer}
               alt='Delivery'
