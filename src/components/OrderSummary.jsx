@@ -1,5 +1,5 @@
-import api from '../api'
-import { useEffect, useState } from 'react'
+import api from "../api"
+import { useEffect, useState } from "react"
 /* eslint-disable react/prop-types */
 
 //fix shipping charges stuff and this whole thing...
@@ -10,16 +10,16 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
   const initPayment = async (data) => {
     let key
 
-    api.get('/payment/apiInfo').then((response) => (key = response.data))
+    api.get("/payment/apiInfo").then((response) => (key = response.data))
 
     const options = {
       key,
       amount: data.amount,
       currency: data.currency,
-      name: 'TNZ Creations',
-      description: 'stuff',
+      name: "TNZ Creations",
+      description: "stuff",
       image:
-        'https://media.licdn.com/dms/image/D4D0BAQF0YFSp2hlBtw/company-logo_200_200/0/1692339886676?e=1701907200&v=beta&t=Ul0GSwyA25VHm5VrvGbmIOboReOKB0ZAyrpZ5rlGt3E',
+        "https://media.licdn.com/dms/image/D4D0BAQF0YFSp2hlBtw/company-logo_200_200/0/1692339886676?e=1701907200&v=beta&t=Ul0GSwyA25VHm5VrvGbmIOboReOKB0ZAyrpZ5rlGt3E",
       order_id: data.id,
       callback_url: `http://localhost:3000/payment/verify?orderId=${orderData._id}&addressId=${selectedOption}&email=${user.email}&shippingCharges=${shippingCharges}`,
       prefill: {
@@ -28,7 +28,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
         contact: user.phone,
       },
       theme: {
-        color: '#000',
+        color: "#000",
       },
     }
     const rzp1 = new window.Razorpay(options)
@@ -39,13 +39,13 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
     try {
       if (selectedOption.length > 0) {
         const id = orderData._id
-        const { data } = await api.post('/payment/orders', {
+        const { data } = await api.post("/payment/orders", {
           productId: id,
           shippingCharges,
         })
         initPayment(data.data)
       } else {
-        setAddressMessage('Please select an address.')
+        setAddressMessage("Please select an address.")
       }
     } catch (err) {
       console.error(err)
@@ -118,7 +118,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
 
           <div className='flex justify-between border-b border-gray-200 mt-1 text-sm text-gray-500 font-medium py-3 uppercas'>
             <p>Shipping</p>
-            <p>₹{shippingCharges === 60 ? '60.00' : '0.00'}</p>
+            <p>₹{shippingCharges === 60 ? "60.00" : "0.00"}</p>
           </div>
 
           <div className='flex justify-between text-gray-800 font-medium py-3 uppercas'>
@@ -131,7 +131,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
                       orderData.totalAmount +
                       shippingCharges
                   )
-                : '0'}
+                : "0"}
             </p>
           </div>
           <button
