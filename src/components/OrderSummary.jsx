@@ -55,7 +55,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
   useEffect(() => {
     if (orderData && orderData.totalAmount) {
       if (
-        parseInt(orderData.totalAmount * 0.18 + orderData.totalAmount) < 499
+        parseInt(orderData.totalAmount * 0.18 + orderData.totalAmount) > 499
       ) {
         setShippingCharges(0)
       } else {
