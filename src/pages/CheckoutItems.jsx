@@ -43,6 +43,8 @@ function CheckoutItems({ user, setCartCount, cartCount, setOrderData }) {
             );
             return updatedOrderData;
         });
+
+        window.location.reload();
     };
 
     const update_product_quantity = (id, newQuantity) => {
