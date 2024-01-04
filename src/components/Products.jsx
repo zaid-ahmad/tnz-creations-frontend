@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import api from "../api";
 import { useNavigate, Link } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PlaceholderLoading from "react-placeholder-loading";
 
 import SelectColorModal from "./SelectColorModal";
@@ -15,7 +15,6 @@ function Products({
     setWishlistCount,
     setCartCount,
     cartCount,
-    selectedCategory,
 }) {
     const navigateTo = useNavigate();
     const [message, setMessage] = useState("");
@@ -172,7 +171,7 @@ function Products({
                 </div>
                 <div className='flex flex-col gap-6 md:grid md:grid-cols-3'>
                     {products && products.length > 0 ? (
-                        products.map((product, index) => {
+                        products.map((product) => {
                             return (
                                 <React.Fragment key={product._id}>
                                     {showModal && (
