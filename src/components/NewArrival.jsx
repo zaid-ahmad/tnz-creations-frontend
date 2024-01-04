@@ -15,7 +15,6 @@ function NewArrival({
     deleteFromWishlist,
 }) {
     const [newArr, setNewArr] = useState([]);
-    const [source, setSource] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [productColors, setProductColors] = useState([]);
     const [id, setId] = useState("");
@@ -30,33 +29,6 @@ function NewArrival({
             }
         });
     }, []);
-
-    useEffect(() => {
-        // Fetch images for each product and update the state
-        const fetchImages = async () => {
-            const imageSources = await Promise.all(
-                newArr.map((product) =>
-                    api
-                        .get(`/images/uploads/${product.images[0]}`, {
-                            responseType: "arraybuffer",
-                        })
-                        .then((response) => {
-                            const base64 = btoa(
-                                new Uint8Array(response.data).reduce(
-                                    (data, byte) =>
-                                        data + String.fromCharCode(byte),
-                                    ""
-                                )
-                            );
-                            return "data:;base64," + base64;
-                        })
-                )
-            );
-            setSource(imageSources);
-        };
-
-        fetchImages();
-    }, [newArr]);
 
     const addToWishlist = (id) => {
         if (user.expired) {
@@ -100,7 +72,7 @@ function NewArrival({
                     top new arrival
                 </h2>
                 <div className='grid grid-cols-1 md:grid-cols-4 gap-6'>
-                    {newArr.map((prod, index) => {
+                    {newArr.map((prod) => {
                         return (
                             <>
                                 {showModal && (

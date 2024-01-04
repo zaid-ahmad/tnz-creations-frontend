@@ -10,9 +10,7 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 const WishlistItem = ({
     user,
     product,
-    source,
     deleteFromWishlist,
-    index,
     setCartCount,
     cartCount,
 }) => {

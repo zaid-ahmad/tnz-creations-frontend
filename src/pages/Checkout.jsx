@@ -25,7 +25,6 @@ function Checkout({
     const [orderData, setOrderData] = useState(null);
     const [selectedOption, setSelectedOption] = useState("");
     const [addressMessage, setAddressMessage] = useState("");
-    const [message, setMessage] = useState("");
 
     useEffect(() => {
         api.get(`/api/cart/info?email=${user.email}`)
@@ -35,7 +34,7 @@ function Checkout({
                 }
             })
             .catch((err) => {
-                setMessage(err.response.data);
+                console.log(err);
             });
     }, [user]);
 

@@ -22,7 +22,7 @@ function AllOrders({ user }) {
     });
     return (
         <>
-            {orders.map((order, uIndex) => {
+            {orders.map((order) => {
                 const dateObj = new Date(order.date_placed);
                 const options = {
                     month: "short",
