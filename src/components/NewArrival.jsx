@@ -135,9 +135,14 @@ function NewArrival({
                                         <div className='flex items-baseline mb-1 space-x-2 space-y-5'>
                                             <p className='text-xl text-primary font-semibold'>
                                                 ₹
-                                                {prod.price -
-                                                    (prod.discount / 100) *
-                                                        prod.price}
+                                                {Math.ceil(
+                                                    Number(
+                                                        prod.price -
+                                                            (prod.discount /
+                                                                100) *
+                                                                prod.price
+                                                    )
+                                                )}
                                             </p>
                                             <p className='text-sm text-gray-400 line-through'>
                                                 ₹{prod.price}
