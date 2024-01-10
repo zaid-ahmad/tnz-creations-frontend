@@ -22,7 +22,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
             order_id: data.id,
             callback_url: `${
                 import.meta.env.VITE_REACT_API_URL
-            }/payment/verify?orderId=${
+            }payment/verify?orderId=${
                 orderData._id
             }&addressId=${selectedOption}&email=${
                 user.email
