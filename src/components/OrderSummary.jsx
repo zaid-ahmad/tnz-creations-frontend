@@ -21,7 +21,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
             image: "https://media.licdn.com/dms/image/D4D0BAQF0YFSp2hlBtw/company-logo_200_200/0/1692339886676?e=1701907200&v=beta&t=Ul0GSwyA25VHm5VrvGbmIOboReOKB0ZAyrpZ5rlGt3E",
             order_id: data.id,
             callback_url: `${
-                import.meta.env.VITE_REACT_APP_URL
+                import.meta.env.VITE_REACT_API_URL
             }/payment/verify?orderId=${
                 orderData._id
             }&addressId=${selectedOption}&email=${
