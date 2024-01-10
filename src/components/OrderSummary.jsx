@@ -115,12 +115,12 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
                                   (product.discount / 100) * product.price
                               )
                             )} */}
-                        <p>₹{Math.ceil(orderData.totalAmount)}</p>
+                        <p>₹{orderData.totalAmount.toFixed(2)}</p>
                     </div>
 
                     <div className='flex justify-between border-b border-gray-200 mt-1 text-sm text-gray-500 font-medium py-3 uppercas'>
                         <p>GST &#40;18%&#41;</p>
-                        <p>₹{orderData.totalAmount * 0.18}</p>
+                        <p>₹{(orderData.totalAmount * 0.18).toFixed(2)}</p>
                     </div>
 
                     <div className='flex justify-between border-b border-gray-200 mt-1 text-sm text-gray-500 font-medium py-3 uppercas'>
