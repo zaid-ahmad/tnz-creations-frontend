@@ -11,7 +11,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
         let key;
 
         try {
-            const response = await api.get("/payment/apiInfo");
+            const response = await api.get("payment/apiInfo");
             key = response.data.key;
 
             // Rest of the code remains the same
