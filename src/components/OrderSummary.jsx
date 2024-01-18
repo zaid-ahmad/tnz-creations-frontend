@@ -10,7 +10,14 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
     const initPayment = async (data) => {
         let key;
 
-        api.get("/payment/apiInfo").then((response) => (key = response.data));
+        try {
+            const response = await api.get("/payment/apiInfo");
+            key = response.data.key;
+
+            // Rest of the code remains the same
+        } catch (error) {
+            console.error(error);
+        }
 
         const options = {
             key,
@@ -48,6 +55,7 @@ function OrderSummary({ orderData, user, selectedOption, setAddressMessage }) {
                     productId: id,
                     shippingCharges,
                 });
+                setShippingCharges(data.shippingCharges);
                 initPayment(data.data);
             } else {
                 setAddressMessage("Please select an address.");
