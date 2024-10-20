@@ -195,29 +195,31 @@ function Products({
                                             title='View Product'
                                             className='hover:bg-opacity-80'
                                         >
-                                            <div className='relative flex justify-center bg-contain'>
-                                                <PlaceholderLoading
-                                                    shape='rect'
-                                                    width={355}
-                                                    height={355}
-                                                />
+                                            <div className='relative flex justify-center items-center bg-white aspect-square overflow-hidden'>
+                                                <div
+                                                    className={
+                                                        loaded
+                                                            ? "hidden"
+                                                            : "block"
+                                                    }
+                                                >
+                                                    <PlaceholderLoading
+                                                        shape='rect'
+                                                        width={355}
+                                                        height={355}
+                                                    />
+                                                </div>
                                                 <img
                                                     src={`https://tnz-creations-images.s3.ap-south-1.amazonaws.com/${product.images[0]}`}
                                                     className={
-                                                        !loaded ? "hidden" : ""
+                                                        !loaded
+                                                            ? "hidden"
+                                                            : "w-full h-full object-contain"
                                                     }
                                                     loading='lazy'
                                                     onLoad={handleLoad}
+                                                    alt={product.name}
                                                 />
-                                                {!loaded && (
-                                                    <img
-                                                        src={`https://tnz-creations-images.s3.ap-south-1.amazonaws.com/${product.images[0]}`}
-                                                        className={
-                                                            "aspect-square"
-                                                        }
-                                                        onLoad={handleLoad}
-                                                    />
-                                                )}
                                                 <div className='absolute inset-0 bg-black bg-opacity-20 transition opacity-0 group-hover:opacity-100'></div>
                                             </div>
                                             <div className='pt-4 pb-3 px-4'>
